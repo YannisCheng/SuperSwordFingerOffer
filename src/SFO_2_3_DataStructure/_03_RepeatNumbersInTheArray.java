@@ -17,12 +17,12 @@ import static SFO_2_3_DataStructure.ArraySortUtils.SortMaoPao;
  * 。
  */
 public class _03_RepeatNumbersInTheArray {
-
+    public static final int[] arrNum = new int[]{2, 3, 5, 4, 3, 6, 2, 7};
     public static void main(String[] args) {
-        final int[] arrNum = new int[]{2, 3, 5, 4, 3, 6, 2, 7};
+
 
         //sortChoose(arrNum);
-        SortMaoPao(arrNum);
+        //SortMaoPao(arrNum);
 
         // 排序：二分法
 
