@@ -1,4 +1,4 @@
-package SFO_2_3_DataStructure;
+package utils;
 
 import java.util.Arrays;
 

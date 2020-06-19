@@ -1,10 +1,5 @@
 package SFO_2_3_DataStructure;
 
-import javax.swing.plaf.basic.BasicArrowButton;
-import java.util.Arrays;
-
-import static SFO_2_3_DataStructure.ArraySortUtils.SortMaoPao;
-
 /**
  * 题目：03 - 数组中重复的数字
  * <p>
@@ -33,6 +28,10 @@ public class _03_RepeatNumbersInTheArray {
         // 排序：希尔
 
         // 排序：快排
+
+        // 排序：堆
+
+        // 排序：归并
 
         /*
          * 找出第1个重复的数字
