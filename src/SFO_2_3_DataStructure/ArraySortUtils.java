@@ -14,14 +14,23 @@ public class ArraySortUtils {
     public static void SortMaoPao(int[] arrNum) {
         // 外层循环控制次数
         for (int i = 0; i < arrNum.length - 1; i++) {
+
+            boolean isChange = false;
             // 内层循环进行相邻2个元素间的大小排序（因为在数组元素取值时需要使用：j + 1，所以要-1）
             for (int j = 0; j < arrNum.length - 1 - i; j++) {
                 if (arrNum[j] > arrNum[j + 1]) {
                     int temp = arrNum[j];
                     arrNum[j] = arrNum[j + 1];
                     arrNum[j + 1] = temp;
+                    isChange = true;
                 }
             }
+
+            if (!isChange) {
+                System.out.println("提前结束：经过第" + (i + 1) + "轮选择后，数组为" + Arrays.toString(arrNum));
+                return;
+            }
+
             System.out.println("经过第" + (i + 1) + "轮选择后，数组为" + Arrays.toString(arrNum));
         }
     }
