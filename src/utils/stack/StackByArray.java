@@ -13,12 +13,12 @@ import java.util.Arrays;
  */
 public class StackByArray<T> {
 
-    private Object[] stack = null;
+    private T[] stack = null;
     private int size = 0;
-    final int DEFAULT_SIZE = 10;
+    final int DEFAULT_SIZE = 4;
 
     public StackByArray() {
-        stack = new Object[DEFAULT_SIZE];
+        stack = (T[]) new Object[DEFAULT_SIZE];
     }
 
     /**
@@ -28,35 +28,55 @@ public class StackByArray<T> {
      * @return 是否插入成功
      */
     public T push(T item) {
-
         automaticExpansion(size);
-        System.out.println("当前入栈index=" + size);
+        System.out.println("当前入栈 index =" + size);
         stack[size] = item;
         size++;
         return item;
     }
 
-    private void automaticExpansion(int newSize) {
-        int len = stack.length;
-        if (newSize >= len) {
-            newSize = newSize * 3 / 2;
-            System.out.println("当前栈已经扩容，扩容后size：" + newSize);
-            stack = Arrays.copyOf(stack, newSize);
-            System.out.println("当前栈已经扩容，容量为：" + stack.length);
+    /**
+     * 数组自动扩容
+     *
+     * @param oldSize 原栈容量
+     */
+    private void automaticExpansion(int oldSize) {
+        if (oldSize >= stack.length) {
+            oldSize = oldSize * 3 / 2;
+            stack = Arrays.copyOf(stack, oldSize);
+            System.out.println("当前栈已经自动扩容，容量为：" + stack.length);
         }
     }
 
     /**
-     * 出栈
+     * 弹出栈顶的元素
      *
      * @return 取出栈顶元素
      */
     public T pop() {
-        T item = (T) stack[size - 1];
+        T item = stack[size - 1];
         stack[size - 1] = null;
         size--;
         System.out.println("当前出栈index=" + size);
         return item;
+    }
+
+    /**
+     * 弹出指定数量的栈元素
+     *
+     * @param number 指定数量
+     */
+    public void popWithNumber(int number) {
+        System.out.println("弹出栈内的" + number + "个元素");
+        if (number <= (size - 1)) {
+            for (int i = 0; i < number; i++) {
+                stack[size - 1] = null;
+                size--;
+            }
+            System.out.println("popWithIndex == 当前栈顶的元素index为：" + size);
+        } else {
+            throw new ArrayIndexOutOfBoundsException("当前index：" + number + "，大于栈内的实际元素数量");
+        }
     }
 
     /**
@@ -65,31 +85,82 @@ public class StackByArray<T> {
      * @return 获取栈顶元素，不出栈
      */
     public T peek() {
-        System.out.println("当前栈顶元素为：" + (T) stack[size - 1]);
-        return (T) stack[size - 1];
+        System.out.println("仅仅获取当前栈顶元素：" + stack[size - 1] + "，不弹出");
+        return stack[size - 1];
     }
 
+    /**
+     * 清空栈
+     */
     public void clearStack() {
         Arrays.fill(stack, null);
     }
 
     /**
-     * 是否为空
+     * 清除栈内的指定对象本身及其之上的所有数据
+     *
+     * @param obj 指定的对象
+     */
+    public void popWithObj(T obj) {
+        int actualIndex = -1;
+        for (int i = 0; i < size; i++) {
+            if (stack[i] == obj) {
+                actualIndex = i;
+                System.out.println("当前对象在栈内的index是：" + i);
+                break;
+            }
+        }
+        if (actualIndex == -1) {
+            System.out.println("当前栈内不存在改元素" + obj.toString());
+            return;
+        }
+
+        System.out.println("弹出栈内index为：" + actualIndex + "的自身及其之上的所有元素");
+        for (int i = size - 1; i >= actualIndex; i--) {
+            stack[i] = null;
+        }
+        size = size - Math.abs(actualIndex - size);
+    }
+
+    /**
+     * 栈内元素是否为空
      *
      * @return true为空
      */
     public boolean empty() {
-        System.out.println(size == 0 ? "当前栈内元素为空" : "不为空");
-        return size == 0;
+        boolean isHas = false;
+        for (Object o : stack) {
+            isHas = o != null;
+        }
+        return isHas;
     }
 
     /**
      * 遍历栈中的元素
      */
     public void showAll() {
-        for (Object item : stack) {
-            if (item != null) {
-                System.out.println(((T) item).toString());
+        boolean isHas = false;
+        for (Object o : stack) {
+            if (o != null) {
+                isHas = true;
+                System.out.println(o.toString());
+            }
+        }
+        if (!isHas) {
+            System.out.println("栈内暂无元素");
+        }
+    }
+
+    /**
+     * 共测试使用：查看stack内各个index上数据的状态
+     * （以防：数据在插入栈内时index位置错误）
+     */
+    public void showAllTest() {
+        for (int i = 0; i < stack.length; i++) {
+            if (stack[i] == null) {
+                System.out.println("当前index元素为：" + "null");
+            } else {
+                System.out.println("当前index元素为：" + stack[i].toString());
             }
         }
     }
