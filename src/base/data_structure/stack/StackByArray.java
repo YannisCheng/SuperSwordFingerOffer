@@ -1,4 +1,4 @@
-package utils.stack;
+package base.data_structure.stack;
 
 import java.util.Arrays;
 
@@ -8,17 +8,17 @@ import java.util.Arrays;
  * 1：数组容量是固定不变的，向栈内push元素时要时时检测容量是否已满
  * 2：pop元素时，要时时检测当前栈内是否还有元素
  * 3：数组的扩容问题。因为在栈初始化时使用的是默认大小
- *
+ * <p>
  * 注意：有些方法内在通过size获取对应元素时，需要-1，那是因为在push元素后，"size+1"所致。
- *      此时的"size+1"位置对应的元素为null数据。
+ * 此时的"size+1"位置对应的元素为null数据。
  *
  * @param <T> 栈内的对象类型
  */
 public class StackByArray<T> {
 
+    final int DEFAULT_SIZE = 10;
     private T[] stack = null;
     private int size = 0;
-    final int DEFAULT_SIZE = 10;
 
     public StackByArray() {
         stack = (T[]) new Object[DEFAULT_SIZE];

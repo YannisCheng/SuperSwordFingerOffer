@@ -1,6 +1,6 @@
-package utils.bean;
+package base.bean;
 
-public class BookBean {
+public class BookCase {
 
     private int index;
     private String bookName;
@@ -11,7 +11,7 @@ public class BookBean {
     /*public BookBean() {
     }*/
 
-    public BookBean(int index, String bookName, String bookAuthor, int bookPrice, int bookPageSize) {
+    public BookCase(int index, String bookName, String bookAuthor, int bookPrice, int bookPageSize) {
         this.index = index;
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;

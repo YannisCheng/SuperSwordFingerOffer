@@ -1,4 +1,4 @@
-package utils;
+package base.base_algorithms;
 
 import java.util.Arrays;
 
@@ -6,10 +6,10 @@ import java.util.Arrays;
  * 排序工具类
  * 2020-06-19 09:26:53 周五
  */
-public class ArraySortUtils {
+public class SortAlgorithms {
 
     /**
-     * 排序：冒泡
+     * 排序：01 - 冒泡
      */
     public static void SortMaoPao(int[] arrNum) {
         // 外层循环控制次数
@@ -36,7 +36,7 @@ public class ArraySortUtils {
     }
 
     /*
-     * 排序：选择
+     * 排序：02 - 选择
      * 复杂度：n*n
      *
      * 顺序：从小到大
@@ -71,5 +71,29 @@ public class ArraySortUtils {
             System.out.println("经过第" + (i + 1) + "轮选择后，数组为" + Arrays.toString(arrNum));
         }
     }
+
+    /**
+     * 排序：03 - 二分法
+     */
+
+    /**
+     * 排序：04 - 快排
+     */
+
+    /**
+     * 排序：05 - 堆排序
+     */
+
+    /**
+     * 排序：06 - 希尔
+     */
+
+    /**
+     * 排序：07 - 归并
+     */
+
+    /**
+     * 查找：01 - 二分法
+     */
 
 }
