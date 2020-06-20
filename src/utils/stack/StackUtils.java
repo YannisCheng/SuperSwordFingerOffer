@@ -17,6 +17,7 @@ public class StackUtils {
         bookStack.showAllTest();
 
         bookStack.peek();
+        bookStack.showAllTest();
         BookBean bean = bookStack.pop();
         System.out.println("弹出的栈顶元素为：" + bean.toString());
         bookStack.showAllTest();

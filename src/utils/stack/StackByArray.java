@@ -18,7 +18,7 @@ public class StackByArray<T> {
 
     private T[] stack = null;
     private int size = 0;
-    final int DEFAULT_SIZE = 4;
+    final int DEFAULT_SIZE = 10;
 
     public StackByArray() {
         stack = (T[]) new Object[DEFAULT_SIZE];
@@ -31,6 +31,7 @@ public class StackByArray<T> {
      * @return 是否插入成功
      */
     public T push(T item) {
+        // 此处需要传入栈内的"实际元素size值"
         automaticExpansion(size);
         System.out.println("当前入栈 index =" + size);
         stack[size] = item;
