@@ -9,6 +9,9 @@ import java.util.Arrays;
  * 2：pop元素时，要时时检测当前栈内是否还有元素
  * 3：数组的扩容问题。因为在栈初始化时使用的是默认大小
  *
+ * 注意：有些方法内在通过size获取对应元素时，需要-1，那是因为在push元素后，"size+1"所致。
+ *      此时的"size+1"位置对应的元素为null数据。
+ *
  * @param <T> 栈内的对象类型
  */
 public class StackByArray<T> {
