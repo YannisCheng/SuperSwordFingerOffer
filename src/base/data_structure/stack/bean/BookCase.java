@@ -1,4 +1,4 @@
-package base.bean;
+package base.data_structure.stack.bean;
 
 public class BookCase {
 

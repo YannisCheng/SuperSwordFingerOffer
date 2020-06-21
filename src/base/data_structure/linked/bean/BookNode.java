@@ -1,4 +1,4 @@
-package base.data_structure.linked_list;
+package base.data_structure.linked.bean;
 
 /**
  * 单向链表节点用例

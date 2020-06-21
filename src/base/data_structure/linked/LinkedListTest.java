@@ -1,7 +1,16 @@
-package base.data_structure.linked_list;
+package base.data_structure.linked;
+
+import base.data_structure.linked.bean.BookNode;
+import base.data_structure.linked.structure.SingleLinkedList;
 
 /**
  * 链表测试工具类
+ * 2020-6-19 21:13:22
+ *
+ * 共3种链表构建方式
+ * 1：单向链表 {@link SingleLinkedList}
+ * 2：双向链表 {@link base.data_structure.linked.structure.DoublyLinkedList}
+ * 3：状状链表 {@link base.data_structure.linked.structure.CircleLinkedList}
  */
 public class LinkedListTest {
 
@@ -27,7 +36,7 @@ public class LinkedListTest {
         BookNode node7 = new BookNode(7);
         BookNode node8 = new BookNode(8);
         BookNode node9 = new BookNode(9);
-        BookNode node10 = new BookNode (10);
+        BookNode node10 = new BookNode(10);
 
         // 尾插测试
         singleLinkedList.pushEnd(node0);

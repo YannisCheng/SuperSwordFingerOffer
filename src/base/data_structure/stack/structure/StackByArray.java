@@ -1,4 +1,4 @@
-package base.data_structure.stack;
+package base.data_structure.stack.structure;
 
 import java.util.Arrays;
 

@@ -1,9 +1,15 @@
 package base.data_structure.stack;
 
-import base.bean.BookCase;
+import base.data_structure.stack.bean.BookCase;
+import base.data_structure.stack.structure.StackByArray;
 
 /**
  * 自定义栈测试工具类
+ * 2020-6-20 21:31:16
+ *
+ * 目前2种栈的实现方式：
+ * 1：数组 {@link StackByArray}
+ * 2：链表 {@link base.data_structure.stack.structure.StackByLinked}
  */
 public class StackTestUtil {
 

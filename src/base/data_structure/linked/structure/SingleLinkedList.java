@@ -1,10 +1,11 @@
-package base.data_structure.linked_list;
+package base.data_structure.linked.structure;
+
+import base.data_structure.linked.bean.BookNode;
 
 import java.util.Stack;
 
 /**
  * 单项链表
- *
  * 2020-6-19 22:50:11
  */
 public class SingleLinkedList {
@@ -63,7 +64,7 @@ public class SingleLinkedList {
         }
         while (temp != null) {
             if (temp.getNext() == node) {
-                System.out.println("删除的元素为："+temp.getNext().getNumIndex());
+                System.out.println("删除的元素为：" + temp.getNext().getNumIndex());
                 temp.setNext(temp.getNext().getNext());
                 break;
             }
@@ -74,7 +75,7 @@ public class SingleLinkedList {
     /**
      * 头部删除
      */
-    public void deleteFront(){
+    public void deleteFront() {
         BookNode temp = head;
         temp.setNext(temp.getNext().getNext());
         head = temp;
@@ -100,14 +101,14 @@ public class SingleLinkedList {
 
     /**
      * 链表翻转
-     *
+     * <p>
      * 方法中："语句：2"+"语句3"
      * == node1.setNext(null)
      * == node2.setNext(node1)
      * == node3.setNext(node2)
      * == node4.setNext(node3)
      */
-    public void reverse(){
+    public void reverse() {
         // 通过“head.getNext()”获取原链表的首节点
         BookNode curTemp = head.getNext();
         // 暂存[curTemp]节点的下一个节点
@@ -126,7 +127,7 @@ public class SingleLinkedList {
             curTemp.setNext(prevNode);
             // 为新链表的下一个节点设置具体节点
             // 语句：3
-            prevNode =curTemp;
+            prevNode = curTemp;
             // 继续遍历原有链表的下一个节点
             curTemp = next;
         }
@@ -137,7 +138,7 @@ public class SingleLinkedList {
     /**
      * 从尾到头打印单链表
      */
-    public void reversePrint(){
+    public void reversePrint() {
         Stack<BookNode> stack = new Stack<>();
         BookNode bookNode = head.getNext();
         while (bookNode != null) {
@@ -145,7 +146,7 @@ public class SingleLinkedList {
             bookNode = bookNode.getNext();
         }
 
-        while (stack.size()>0) {
+        while (stack.size() > 0) {
             System.out.println(stack.pop());
         }
     }
@@ -153,6 +154,7 @@ public class SingleLinkedList {
 
     /**
      * 链表长度
+     *
      * @return 长度
      */
     public int len() {
