@@ -40,5 +40,10 @@ public class LinkedListTest {
         singleLinkedList.forEach();*/
         singleLinkedList.reverse();
         singleLinkedList.forEach();
+        singleLinkedList.deleteFront();
+        singleLinkedList.forEach();
+        node3.setNumIndex(33);
+        singleLinkedList.upDataNode(node4);
+        singleLinkedList.forEach();
     }
 }

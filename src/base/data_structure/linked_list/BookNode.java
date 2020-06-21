@@ -18,6 +18,9 @@ public class BookNode {
         return numIndex;
     }
 
+    public void setNumIndex(int numIndex) {
+        this.numIndex = numIndex;
+    }
 
     public BookNode getNext() {
         return next;

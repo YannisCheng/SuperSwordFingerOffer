@@ -50,7 +50,7 @@ public class SingleLinkedList {
     }
 
     /**
-     * 尾部删除
+     * 删除指定元素
      */
     public void removeEnd(BookNode node) {
         BookNode temp = head;
@@ -71,15 +71,27 @@ public class SingleLinkedList {
      * 头部删除
      */
     public void deleteFront(){
-
+        BookNode temp = head;
+        temp.setNext(temp.getNext().getNext());
+        head = temp;
     }
 
 
     /**
      * 更新节点
      */
-    public void upDataNode() {
-
+    public void upDataNode(BookNode node) {
+        BookNode temp = head;
+        if (temp.getNext() == node) {
+            temp.setNext(null);
+        }
+        while (temp != null) {
+            if (temp.getNext() == node) {
+                temp.setNext(node);
+                break;
+            }
+            temp = temp.getNext();
+        }
     }
 
     /**
@@ -118,15 +130,6 @@ public class SingleLinkedList {
         head.setNext(prevNode);
     }
 
-    /**
-     * 插入节点
-     */
-    public void insertNode(BookNode node, int index) {
-        BookNode temp = head;
-        while (temp.getNext() != null) {
-
-        }
-    }
 
     /**
      * 链表长度
