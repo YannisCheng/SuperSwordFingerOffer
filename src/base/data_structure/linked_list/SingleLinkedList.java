@@ -84,27 +84,38 @@ public class SingleLinkedList {
 
     /**
      * 链表翻转
+     *
+     * 方法中："语句：2"+"语句3"
+     * == node1.setNext(null)
+     * == node2.setNext(node1)
+     * == node3.setNext(node2)
+     * == node4.setNext(node3)
      */
     public void reverse(){
-        // 原链表的首节点
+        // 通过“head.getNext()”获取原链表的首节点
         BookNode curTemp = head.getNext();
         // 暂存[curTemp]节点的下一个节点
         BookNode next = null;
-        // 新翻转链表的暂存节点
-        BookNode reverseNode = new BookNode();
+        // 翻转链表时的中间临时变量（temp）。
+        // 原链表中每一个节点指向的前一个节点
+        // 此节点必须是null，否在在执行“curTemp.setNext(prevNode);”时就会向原有链表中
+        // 中的“第1个实际节点”添加一个“BookNode{numIndex=0, next=null}”对象
+        BookNode prevNode = null;
         while (curTemp != null) {
             //暂存[curTemp]节点的下一个节点
             next = curTemp.getNext();
+            // 语句：2
             // 将下一个节点的指向改为新链表的暂存节点
             // （原有链表间的指向断开，建立新的指向<新链表的下一个节点，不是新链表节点本身>）
-            curTemp.setNext(reverseNode.getNext());
+            curTemp.setNext(prevNode);
             // 为新链表的下一个节点设置具体节点
-            reverseNode.setNext(curTemp);
+            // 语句：3
+            prevNode =curTemp;
             // 继续遍历原有链表的下一个节点
             curTemp = next;
         }
         // 将新链表的实际节点赋值给头结点
-        head.setNext(reverseNode.getNext());
+        head.setNext(prevNode);
     }
 
     /**

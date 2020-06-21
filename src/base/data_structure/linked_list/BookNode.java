@@ -1,7 +1,6 @@
 package base.data_structure.linked_list;
 
 public class BookNode {
-    private String bnName;
     private int numIndex;
     private BookNode next;
 
@@ -9,18 +8,9 @@ public class BookNode {
         this.next = null;
     }
 
-    public BookNode(String bnName, int numIndex) {
-        this.bnName = bnName;
+    public BookNode(int numIndex) {
         this.numIndex = numIndex;
         this.next = null;
-    }
-
-    public String getBnName() {
-        return bnName;
-    }
-
-    public void setBnName(String bnName) {
-        this.bnName = bnName;
     }
 
 
@@ -41,8 +31,7 @@ public class BookNode {
     @Override
     public String toString() {
         return "BookNode{" +
-                "bnName='" + bnName + '\'' +
-                ", numIndex=" + numIndex +
+                "numIndex=" + numIndex +
                 ", next=" + next +
                 '}';
     }

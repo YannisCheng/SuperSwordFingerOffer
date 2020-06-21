@@ -5,17 +5,17 @@ public class LinkedListTest {
     public static void main(String[] args) {
         SingleLinkedList singleLinkedList = new SingleLinkedList();
 
-        BookNode node0 = new BookNode("ren", 0);
-        BookNode node1 = new BookNode("ren", 1);
-        BookNode node2 = new BookNode("ren", 2);
-        BookNode node3 = new BookNode("ren", 3);
-        BookNode node4 = new BookNode("ren", 4);
-        BookNode node5 = new BookNode("ren", 5);
-        BookNode node6 = new BookNode("ren", 6);
-        BookNode node7 = new BookNode("ren", 7);
-        BookNode node8 = new BookNode("ren", 8);
-        BookNode node9 = new BookNode("ren", 9);
-        BookNode node10 = new BookNode("ren", 10);
+        BookNode node0 = new BookNode(0);
+        BookNode node1 = new BookNode(1);
+        BookNode node2 = new BookNode(2);
+        BookNode node3 = new BookNode(3);
+        BookNode node4 = new BookNode(4);
+        BookNode node5 = new BookNode(5);
+        BookNode node6 = new BookNode(6);
+        BookNode node7 = new BookNode(7);
+        BookNode node8 = new BookNode(8);
+        BookNode node9 = new BookNode(9);
+        BookNode node10 = new BookNode (10);
 
         // 尾插测试
         singleLinkedList.pushEnd(node0);
