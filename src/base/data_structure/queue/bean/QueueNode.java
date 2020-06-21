@@ -1,14 +1,15 @@
 package base.data_structure.queue.bean;
 
 /**
- * 队列测试对象用例
- * 2020年6月21日23:32:30
+ * 链表队列node用例
+ * 2020-6-21 23:52:50
  */
-public class PersonCase {
+public class QueueNode<T> {
     private String name;
     private int index;
+    private QueueNode<T> next;
 
-    public PersonCase(String name, int index) {
+    public QueueNode(String name, int index) {
         this.name = name;
         this.index = index;
     }
@@ -29,11 +30,20 @@ public class PersonCase {
         this.index = index;
     }
 
+    public QueueNode<T> getNext() {
+        return next;
+    }
+
+    public void setNext(QueueNode<T> next) {
+        this.next = next;
+    }
+
     @Override
     public String toString() {
-        return "PersonCase{" +
+        return "QueueNode{" +
                 "name='" + name + '\'' +
                 ", index=" + index +
+                ", next=" + next +
                 '}';
     }
 }

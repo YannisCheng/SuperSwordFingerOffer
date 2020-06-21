@@ -1,4 +1,4 @@
-package SFO_2_3_DataStructure;
+package sfo_colleaction.SFO_2_3_DataStructure;
 
 /**
  * 题目：03 - 数组中重复的数字
