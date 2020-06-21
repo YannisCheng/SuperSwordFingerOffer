@@ -18,12 +18,12 @@ public class LinkedListTest {
         BookNode node10 = new BookNode("ren", 10);
 
         // 尾插测试
-        singleLinkedList.pushOrder(node0);
-        singleLinkedList.pushOrder(node1);
-        singleLinkedList.pushOrder(node2);
-        singleLinkedList.pushOrder(node3);
-        singleLinkedList.pushOrder(node4);
-        singleLinkedList.len();
+        singleLinkedList.pushEnd(node0);
+        singleLinkedList.pushEnd(node1);
+        singleLinkedList.pushEnd(node2);
+        singleLinkedList.pushEnd(node3);
+        singleLinkedList.pushEnd(node4);
+        /*singleLinkedList.len();
         singleLinkedList.forEach();
         // 头插测试
         singleLinkedList.pushFront(node5);
@@ -34,10 +34,11 @@ public class LinkedListTest {
         singleLinkedList.len();
         singleLinkedList.forEach();
         System.out.println("---------------");
-        singleLinkedList.remove(node2);
-        singleLinkedList.remove(node7);
+        singleLinkedList.removeEnd(node2);
+        singleLinkedList.removeEnd(node7);
         singleLinkedList.len();
+        singleLinkedList.forEach();*/
+        singleLinkedList.reverse();
         singleLinkedList.forEach();
-
     }
 }

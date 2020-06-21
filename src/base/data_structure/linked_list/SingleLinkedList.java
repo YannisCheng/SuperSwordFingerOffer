@@ -35,7 +35,7 @@ public class SingleLinkedList {
      *
      * @param node 链表元素
      */
-    public void pushOrder(BookNode node) {
+    public void pushEnd(BookNode node) {
         nullCheck(node);
 
         if (head.getNext() == null) {
@@ -50,9 +50,9 @@ public class SingleLinkedList {
     }
 
     /**
-     * 删除节点
+     * 尾部删除
      */
-    public void remove(BookNode node) {
+    public void removeEnd(BookNode node) {
         BookNode temp = head;
         if (temp.getNext() == node) {
             temp.setNext(null);
@@ -67,12 +67,44 @@ public class SingleLinkedList {
         }
     }
 
+    /**
+     * 头部删除
+     */
+    public void deleteFront(){
+
+    }
+
 
     /**
      * 更新节点
      */
     public void upDataNode() {
 
+    }
+
+    /**
+     * 链表翻转
+     */
+    public void reverse(){
+        // 原链表的首节点
+        BookNode curTemp = head.getNext();
+        // 暂存[curTemp]节点的下一个节点
+        BookNode next = null;
+        // 新翻转链表的暂存节点
+        BookNode reverseNode = new BookNode();
+        while (curTemp != null) {
+            //暂存[curTemp]节点的下一个节点
+            next = curTemp.getNext();
+            // 将下一个节点的指向改为新链表的暂存节点
+            // （原有链表间的指向断开，建立新的指向<新链表的下一个节点，不是新链表节点本身>）
+            curTemp.setNext(reverseNode.getNext());
+            // 为新链表的下一个节点设置具体节点
+            reverseNode.setNext(curTemp);
+            // 继续遍历原有链表的下一个节点
+            curTemp = next;
+        }
+        // 将新链表的实际节点赋值给头结点
+        head.setNext(reverseNode.getNext());
     }
 
     /**
@@ -85,6 +117,10 @@ public class SingleLinkedList {
         }
     }
 
+    /**
+     * 链表长度
+     * @return 长度
+     */
     public int len() {
         BookNode temp = head;
         int length = 0;
