@@ -4,10 +4,10 @@ package base.data_structure.queue.bean;
  * 链表队列node用例
  * 2020-6-21 23:52:50
  */
-public class QueueNode<T> {
+public class QueueNode {
     private String name;
     private int index;
-    private QueueNode<T> next;
+    private QueueNode next;
 
     public QueueNode(String name, int index) {
         this.name = name;
@@ -30,11 +30,11 @@ public class QueueNode<T> {
         this.index = index;
     }
 
-    public QueueNode<T> getNext() {
+    public QueueNode getNext() {
         return next;
     }
 
-    public void setNext(QueueNode<T> next) {
+    public void setNext(QueueNode next) {
         this.next = next;
     }
 
