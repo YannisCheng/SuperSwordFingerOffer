@@ -1,7 +1,11 @@
 package base.data_structure.linked_list;
 
+import java.util.Stack;
+
 /**
  * 单项链表
+ *
+ * 2020-6-19 22:50:11
  */
 public class SingleLinkedList {
 
@@ -128,6 +132,22 @@ public class SingleLinkedList {
         }
         // 将新链表的实际节点赋值给头结点
         head.setNext(prevNode);
+    }
+
+    /**
+     * 从尾到头打印单链表
+     */
+    public void reversePrint(){
+        Stack<BookNode> stack = new Stack<>();
+        BookNode bookNode = head.getNext();
+        while (bookNode != null) {
+            stack.push(bookNode);
+            bookNode = bookNode.getNext();
+        }
+
+        while (stack.size()>0) {
+            System.out.println(stack.pop());
+        }
     }
 
 

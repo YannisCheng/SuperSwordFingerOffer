@@ -1,8 +1,20 @@
 package base.data_structure.linked_list;
 
+/**
+ * 链表测试工具类
+ */
 public class LinkedListTest {
 
     public static void main(String[] args) {
+        //singleLinkedListTest();
+        doublyLinkedListTest();
+    }
+
+    private static void doublyLinkedListTest() {
+
+    }
+
+    private static void singleLinkedListTest() {
         SingleLinkedList singleLinkedList = new SingleLinkedList();
 
         BookNode node0 = new BookNode(0);
@@ -23,7 +35,7 @@ public class LinkedListTest {
         singleLinkedList.pushEnd(node2);
         singleLinkedList.pushEnd(node3);
         singleLinkedList.pushEnd(node4);
-        /*singleLinkedList.len();
+        singleLinkedList.len();
         singleLinkedList.forEach();
         // 头插测试
         singleLinkedList.pushFront(node5);
@@ -37,13 +49,17 @@ public class LinkedListTest {
         singleLinkedList.removeEnd(node2);
         singleLinkedList.removeEnd(node7);
         singleLinkedList.len();
-        singleLinkedList.forEach();*/
+        singleLinkedList.forEach();
         singleLinkedList.reverse();
         singleLinkedList.forEach();
         singleLinkedList.deleteFront();
         singleLinkedList.forEach();
+        System.out.println("---------------");
         node3.setNumIndex(33);
         singleLinkedList.upDataNode(node4);
         singleLinkedList.forEach();
+
+        System.out.println("---------------");
+        singleLinkedList.reversePrint();
     }
 }

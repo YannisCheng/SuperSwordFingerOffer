@@ -1,5 +1,8 @@
 package base.data_structure.linked_list;
 
+/**
+ * 单向链表节点用例
+ */
 public class BookNode {
     private int numIndex;
     private BookNode next;
