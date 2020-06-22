@@ -1,7 +1,5 @@
 package base.data_structure.queue.structure;
 
-import base.data_structure.queue.bean.PersonCase;
-
 /**
  * 队列 - 数组单向 实现方式
  * 2020-6-21 21:11:35

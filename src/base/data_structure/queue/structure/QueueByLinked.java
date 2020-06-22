@@ -17,7 +17,7 @@ public class QueueByLinked {
 
 
     public QueueByLinked() {
-        head = rear = new QueueNode("", -1);
+        head = new QueueNode("", -1);
     }
 
     /**
@@ -38,7 +38,7 @@ public class QueueByLinked {
         }
 
         System.out.println(head);
-        rear.setNext(node);
+        rear = node;
         size++;
     }
 
@@ -58,21 +58,21 @@ public class QueueByLinked {
         return item;
     }
 
-    public void forEach(){
+    public void forEach() {
         if (isEmpty()) {
             System.out.println("队列内容为空");
         } else {
-            System.out.println("head is : "+head);
+            System.out.println("head is : " + head);
             QueueNode temp = head.getNext();
             while (temp != null) {
-                System.out.println("index is : "+temp.getIndex() +", content is : " + temp);
+                System.out.println("index is : " + temp.getIndex() + ", content is : " + temp);
                 temp = temp.getNext();
             }
         }
     }
 
     private boolean isEmpty() {
-        return (head.getNext() == null && rear.getNext() == null);
+        return rear != null && (head.getNext() == null && rear.getNext() == null);
     }
 
     public int getSize() {
