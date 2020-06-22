@@ -1,14 +1,25 @@
 package base.data_structure.queue.structure;
 
-import org.omg.CORBA.Object;
+import base.data_structure.queue.bean.PersonCase;
 
 /**
  * 队列 - 数组单向 实现方式
  * 2020-6-21 21:11:35
+ * <p>
+ * 队列的3个要素：
+ * 1：头部索引font
+ * 2：尾部索引rear
+ * 3：队列容量size
+ * <p>
+ * 存在方法：
+ * 1：push()
+ * 2:pop()
+ * 3:isEmpty()
+ * 4:isFull()
  */
-public class QueueByArray<T> {
+public class QueueByArray {
 
-    private T[] queue = null;
+    private PersonCase[] queue = null;
     /**
      * 队列容量
      */
@@ -24,7 +35,7 @@ public class QueueByArray<T> {
 
     public QueueByArray(int size) {
         this.size = size;
-        queue = (T[]) new Object[size];
+        queue = new PersonCase[size];
     }
 
     /**
@@ -32,30 +43,33 @@ public class QueueByArray<T> {
      *
      * @param obj 元素
      */
-    public boolean push(T obj) {
+    public boolean push(PersonCase obj) {
         boolean isPush;
         if (isFull()) {
             System.out.println("队列已满！");
             isPush = false;
         } else {
-            queue[rear++] = obj;
+            queue[rear] = obj;
+            rear++;
             isPush = true;
         }
         return isPush;
     }
 
     /**
-     * 检出头部元素
+     * 检出元素
      *
      * @return 待检出的元素
      */
-    public T pop() {
-        T obj = null;
+    public PersonCase pop() {
+        PersonCase obj;
         if (isEmpty()) {
-            System.out.println("队列为空！");
+            System.out.println("队列内元素为空！，无法执行pop");
             obj = null;
         } else {
-            obj = queue[font++];
+            obj = queue[font];
+            queue[font] = null;
+            font++;
         }
         return obj;
     }
@@ -65,8 +79,8 @@ public class QueueByArray<T> {
      *
      * @return 待查看的元素
      */
-    public T peek() {
-        T obj = null;
+    public PersonCase peek() {
+        PersonCase obj = null;
         return obj;
     }
 
@@ -75,10 +89,12 @@ public class QueueByArray<T> {
      */
     public void forEach() {
         if (isEmpty()) {
-            System.out.println("当前队列内元素为空！");
+            System.out.println("遍历：当前队列内元素为空！");
         } else {
-            for (T item : queue) {
-                System.out.println(item.toString());
+            for (PersonCase item : queue) {
+                if (item != null) {
+                    System.out.println(item.toString());
+                }
             }
         }
     }
