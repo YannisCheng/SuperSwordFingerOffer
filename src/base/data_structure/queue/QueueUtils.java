@@ -37,7 +37,7 @@ public class QueueUtils {
     }
 
     private static void arrayQueueTest() {
-        QueueByArray personQueue = new QueueByArray(10);
+        QueueByArray<PersonCase> personQueue = new QueueByArray<>(10);
         personQueue.push(new PersonCase("zhao", 0));
         personQueue.push(new PersonCase("qian", 1));
         personQueue.push(new PersonCase("sun", 2));

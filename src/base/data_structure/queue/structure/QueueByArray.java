@@ -17,9 +17,9 @@ import base.data_structure.queue.bean.PersonCase;
  * 3:isEmpty()
  * 4:isFull()
  */
-public class QueueByArray {
+public class QueueByArray<T> {
 
-    private PersonCase[] queue = null;
+    private T[] queue = null;
     /**
      * 队列容量
      */
@@ -35,7 +35,7 @@ public class QueueByArray {
 
     public QueueByArray(int size) {
         this.size = size;
-        queue = new PersonCase[size];
+        queue = (T[]) new Object[size];
     }
 
     /**
@@ -43,7 +43,7 @@ public class QueueByArray {
      *
      * @param obj 元素
      */
-    public boolean push(PersonCase obj) {
+    public boolean push(T obj) {
         boolean isPush;
         if (isFull()) {
             System.out.println("队列已满！");
@@ -61,8 +61,8 @@ public class QueueByArray {
      *
      * @return 待检出的元素
      */
-    public PersonCase pop() {
-        PersonCase obj;
+    public T pop() {
+        T obj;
         if (isEmpty()) {
             System.out.println("队列内元素为空！，无法执行pop");
             obj = null;
@@ -79,8 +79,9 @@ public class QueueByArray {
      *
      * @return 待查看的元素
      */
-    public PersonCase peek() {
-        PersonCase obj = null;
+    public T peek() {
+        T obj = null;
+        obj = queue[font];
         return obj;
     }
 
@@ -91,7 +92,7 @@ public class QueueByArray {
         if (isEmpty()) {
             System.out.println("遍历：当前队列内元素为空！");
         } else {
-            for (PersonCase item : queue) {
+            for (T item : queue) {
                 if (item != null) {
                     System.out.println(item.toString());
                 }
