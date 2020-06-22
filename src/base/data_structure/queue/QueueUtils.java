@@ -37,8 +37,8 @@ public class QueueUtils {
     }
 
     private static void arrayQueueTest() {
-        QueueByArray<PersonCase> personQueue = new QueueByArray<>(10);
-        personQueue.push(new PersonCase("zhao", 0));
+        QueueByArray<PersonCase> personQueue = new QueueByArray<>(5);
+        /*personQueue.push(new PersonCase("zhao", 0));
         personQueue.push(new PersonCase("qian", 1));
         personQueue.push(new PersonCase("sun", 2));
         personQueue.push(new PersonCase("li", 3));
@@ -59,6 +59,14 @@ public class QueueUtils {
         personQueue.pop();
         personQueue.pop();
         personQueue.pop();
+        personQueue.forEach();
+        System.out.println("---push---");*/
+        personQueue.push(new PersonCase("zhao", 0));
+        personQueue.push(new PersonCase("qian", 1));
+        personQueue.push(new PersonCase("sun", 2));
+        personQueue.push(new PersonCase("li", 3));
+        personQueue.push(new PersonCase("zhou", 4));
+        personQueue.push(new PersonCase("wu", 5));
         personQueue.forEach();
     }
 }
