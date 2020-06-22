@@ -25,11 +25,11 @@ public class QueueByArray<T> {
     /**
      * 队列头部位置索引
      */
-    private int font = 0;
+    private int font = -1;
     /**
      * 队列尾部位置索引
      */
-    private int rear = 0;
+    private int rear = -1;
 
     public QueueByArray(int size) {
         this.size = size;
@@ -47,8 +47,9 @@ public class QueueByArray<T> {
             System.out.println("队列已满！");
             isPush = false;
         } else {
-            queue[rear] = obj;
             rear++;
+            queue[rear] = obj;
+            System.out.println("rear++ = "+rear);
             isPush = true;
         }
         return isPush;
@@ -65,9 +66,9 @@ public class QueueByArray<T> {
             System.out.println("队列内元素为空！，无法执行pop");
             obj = null;
         } else {
+            font++;
             obj = queue[font];
             queue[font] = null;
-            font++;
         }
         return obj;
     }
@@ -113,6 +114,6 @@ public class QueueByArray<T> {
      * @return true：满
      */
     public boolean isFull() {
-        return rear == size;
+        return rear == size - 1;
     }
 }

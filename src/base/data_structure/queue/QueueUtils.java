@@ -19,8 +19,8 @@ public class QueueUtils {
 
 
     public static void main(String[] args) {
-        //arrayQueueTest();
-        linkedQueueTest();
+        arrayQueueTest();
+        //linkedQueueTest();
         //arrayCircleQueueTest();
     }
 
