@@ -1,6 +1,8 @@
 package base.data_structure.linked;
 
 import base.data_structure.linked.bean.BookNode;
+import base.data_structure.linked.bean.DoublyBookNode;
+import base.data_structure.linked.structure.DoublyLinkedList;
 import base.data_structure.linked.structure.SingleLinkedList;
 
 /**
@@ -20,7 +22,13 @@ public class LinkedListTest {
     }
 
     private static void doublyLinkedListTest() {
-
+        DoublyLinkedList list = new DoublyLinkedList();
+        list.pushEnd(new DoublyBookNode("one"));
+        list.pushEnd(new DoublyBookNode("two"));
+        list.pushEnd(new DoublyBookNode("three"));
+        list.pushHead(new DoublyBookNode("four"));
+        list.pushHead(new DoublyBookNode("five"));
+        list.froEach();
     }
 
     private static void singleLinkedListTest() {
