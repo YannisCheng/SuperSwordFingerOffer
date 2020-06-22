@@ -3,6 +3,7 @@ package base.data_structure.queue;
 import base.data_structure.queue.bean.PersonCase;
 import base.data_structure.queue.bean.QueueNode;
 import base.data_structure.queue.structure.QueueByArray;
+import base.data_structure.queue.structure.QueueByCircleArray;
 import base.data_structure.queue.structure.QueueByLinked;
 
 /**
@@ -18,11 +19,33 @@ public class QueueUtils {
 
 
     public static void main(String[] args) {
-        arrayQueueTest();
-        //linkedQuueTest();
+        //arrayQueueTest();
+        //linkedQueueTest();
+        arrayCircleQueueTest();
     }
 
-    private static void linkedQuueTest() {
+    private static void arrayCircleQueueTest() {
+        QueueByCircleArray<String> circleArray = new QueueByCircleArray<>(6);
+        circleArray.push("one");
+        circleArray.push("two");
+        circleArray.push("three");
+        circleArray.forEach();
+        System.out.println("pop------------");
+        circleArray.pop();
+        circleArray.pop();
+        circleArray.forEach();
+        System.out.println("push------------");
+        circleArray.push("four");
+        circleArray.push("five");
+        circleArray.push("six");
+        circleArray.push("seven");
+        circleArray.push("six");
+        circleArray.push("seven");
+        circleArray.push("eight");
+        circleArray.forEach();
+    }
+
+    private static void linkedQueueTest() {
         QueueByLinked queue = new QueueByLinked();
         QueueNode pseron0 = new QueueNode("zhao", 0);
         QueueNode pseron1 = new QueueNode("qian", 1);
