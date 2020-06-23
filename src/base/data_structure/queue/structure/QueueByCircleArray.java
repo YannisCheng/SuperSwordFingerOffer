@@ -64,6 +64,15 @@ public class QueueByCircleArray<T> {
         return isPush;
     }
 
+    public T getHead() {
+        if (isEmpty()) {
+            throw new RuntimeException("队列为空，没有数据");
+        }
+        T result = null;
+        result = queue[font];
+        return result;
+    }
+
     public T pop() {
         T item = null;
         if (isEmpty()) {
