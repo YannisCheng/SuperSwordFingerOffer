@@ -8,7 +8,7 @@ import base.data_structure.linked.structure.SingleLinkedList;
 /**
  * 链表测试工具类
  * 2020-6-19 21:13:22
- *
+ * <p>
  * 共3种链表构建方式
  * 1：单向链表 {@link SingleLinkedList}
  * 2：双向链表 {@link base.data_structure.linked.structure.DoublyLinkedList}
@@ -23,12 +23,36 @@ public class LinkedListTestUtils {
 
     private static void doublyLinkedListTest() {
         DoublyLinkedList list = new DoublyLinkedList();
+        // 有问题的popEnd()测试
+        /*list.pushEnd(new DoublyBookNode("end：one"));
+        list.pushEnd(new DoublyBookNode("end：two"));
+        list.pushHead(new DoublyBookNode("head：zero"));
+        list.pushEnd(new DoublyBookNode("end：three"));
+        list.pushHead(new DoublyBookNode("head：four"));
+        list.pushHead(new DoublyBookNode("head：five"));
+        list.froEach();
+        list.size();
+        list.popHead();
+        list.froEach();
+        list.size();
+        list.popHead();
+        list.froEach();
+        list.size();
+        list.popEnd();
+        list.froEach();
+        list.size();
+        // 当链表长度为：3时，测试数字：0，1，3，2
+        list.popIndex(2);
+        list.froEach();
+        list.size();*/
+
         list.pushEnd(new DoublyBookNode("one"));
         list.pushEnd(new DoublyBookNode("two"));
         list.pushEnd(new DoublyBookNode("three"));
-        list.pushHead(new DoublyBookNode("four"));
-        list.pushHead(new DoublyBookNode("five"));
+        list.pushEnd(new DoublyBookNode("four"));
+        list.popIndex(2);
         list.froEach();
+        list.size();
     }
 
     private static void singleLinkedListTest() {

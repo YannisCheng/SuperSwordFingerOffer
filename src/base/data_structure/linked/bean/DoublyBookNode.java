@@ -41,7 +41,7 @@ public class DoublyBookNode {
     @Override
     public String toString() {
         return "DoublyBookNode{" +
-                "data='" + data +
+                "data=" + data +
                 '}';
     }
 }
