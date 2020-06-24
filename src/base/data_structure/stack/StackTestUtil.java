@@ -1,12 +1,14 @@
 package base.data_structure.stack;
 
 import base.data_structure.stack.bean.BookCase;
+import base.data_structure.stack.bean.NodeCase;
 import base.data_structure.stack.structure.StackByArray;
+import base.data_structure.stack.structure.StackByLinked;
 
 /**
  * 自定义栈测试工具类
  * 2020-6-20 21:31:16
- *
+ * <p>
  * 目前2种栈的实现方式：
  * 1：数组 {@link StackByArray}
  * 2：链表 {@link base.data_structure.stack.structure.StackByLinked}
@@ -15,7 +17,23 @@ public class StackTestUtil {
 
     public static void main(String[] args) {
         // 数组栈测试集合
-        stackByArrayTest();
+        // stackByArrayTest();
+        // 链表栈测试集合
+        stackByLinkedTest();
+    }
+
+    private static void stackByLinkedTest() {
+        StackByLinked<String> linked = new StackByLinked<>();
+        linked.push(new NodeCase<>("one"));
+        linked.push(new NodeCase<>("two"));
+        linked.push(new NodeCase<>("three"));
+        linked.push(new NodeCase<>("four"));
+        linked.forEach();
+        linked.size();
+        linked.peek();
+        linked.pop();
+        linked.pop();
+        linked.forEach();
     }
 
     private static void stackByArrayTest() {
