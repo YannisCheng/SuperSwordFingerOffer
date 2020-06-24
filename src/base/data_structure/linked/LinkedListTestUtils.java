@@ -14,7 +14,7 @@ import base.data_structure.linked.structure.SingleLinkedList;
  * 2：双向链表 {@link base.data_structure.linked.structure.DoublyLinkedList}
  * 3：状状链表 {@link base.data_structure.linked.structure.CircleLinkedList}
  */
-public class LinkedListTest {
+public class LinkedListTestUtils {
 
     public static void main(String[] args) {
         //singleLinkedListTest();

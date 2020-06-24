@@ -13,7 +13,7 @@ import base.data_structure.stack.structure.StackByLinked;
  * 1：数组 {@link StackByArray}
  * 2：链表 {@link base.data_structure.stack.structure.StackByLinked}
  */
-public class StackTestUtil {
+public class StackTestUtils {
 
     public static void main(String[] args) {
         // 数组栈测试集合
