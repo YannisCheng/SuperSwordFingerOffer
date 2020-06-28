@@ -1,4 +1,4 @@
-package base.base_algorithms;
+package base.algorithms;
 
 /**
  * RecursiveAlgorithm 递归算法类

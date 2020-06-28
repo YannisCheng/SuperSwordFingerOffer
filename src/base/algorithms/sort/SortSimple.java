@@ -1,12 +1,17 @@
-package base.base_algorithms;
+package base.algorithms.sort;
 
 import java.util.Arrays;
 
 /**
- * 排序工具类
- * 2020-06-19 09:26:53 周五
+ * SortSimple 排序 - 简单
+ * 1、冒泡排序
+ * 2、选择排序
+ * 3、插入排序
+ *
+ * @author yannischeng  cwj1714@163.com
+ * @date 2020-06-19 09:26:53 周五
  */
-public class SortAlgorithms {
+public class SortSimple {
 
     /**
      * 排序：01 - 冒泡
@@ -71,29 +76,4 @@ public class SortAlgorithms {
             System.out.println("经过第" + (i + 1) + "轮选择后，数组为" + Arrays.toString(arrNum));
         }
     }
-
-    /**
-     * 排序：03 - 二分法
-     */
-
-    /**
-     * 排序：04 - 快排
-     */
-
-    /**
-     * 排序：05 - 堆排序
-     */
-
-    /**
-     * 排序：06 - 希尔
-     */
-
-    /**
-     * 排序：07 - 归并
-     */
-
-    /**
-     * 查找：01 - 二分法
-     */
-
 }

@@ -1,4 +1,4 @@
-package base.base_algorithms;
+package base.algorithms;
 
 public class FindAlgorithms {
 }
