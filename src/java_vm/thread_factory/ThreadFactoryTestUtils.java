@@ -1,4 +1,4 @@
-package java.thread_factory;
+package java_vm.thread_factory;
 
 /**
  * ThreadFactoryTestUtils 线程池测试工具类
