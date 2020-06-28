@@ -55,4 +55,11 @@ public class BinaryTreeNode<T extends Comparable> implements Serializable {
     public boolean isLeaf() {
         return this.left == null && this.right == null;
     }
+
+    @Override
+    public String toString() {
+        return "BinaryTreeNode{" +
+                "data=" + data +
+                '}';
+    }
 }

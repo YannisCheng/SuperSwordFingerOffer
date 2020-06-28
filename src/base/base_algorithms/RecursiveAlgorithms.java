@@ -2,6 +2,8 @@ package base.base_algorithms;
 
 /**
  * RecursiveAlgorithm 递归算法类
+ *
+ * 递归思想就是将一个问题转换为一个已解决的问题来实现
  * <p>
  * 参考：
  * https://blog.csdn.net/dreamispossible/article/details/90552557
@@ -66,6 +68,7 @@ public class RecursiveAlgorithms {
      * 是这样一个数列：1、1、2、3、5、8、13、21、34…，
      */
     private static void aboutFibonacciSequence() {
+        
 
     }
 
