@@ -7,4 +7,7 @@ package base.algorithms;
  * @date 2020/6/28 - 16:55
  */
 public class ExercisePad {
+    public static void main(String[] args) {
+
+    }
 }
