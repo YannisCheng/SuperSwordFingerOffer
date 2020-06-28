@@ -16,7 +16,7 @@ public class SortSimple {
     /**
      * 排序：01 - 冒泡
      */
-    public static void SortMaoPao(int[] arrNum) {
+    public static void sortMaoPao(int[] arrNum) {
         // 外层循环控制次数
         for (int i = 0; i < arrNum.length - 1; i++) {
 
@@ -35,9 +35,9 @@ public class SortSimple {
                 System.out.println("提前结束：经过第" + (i + 1) + "轮选择后，数组为" + Arrays.toString(arrNum));
                 return;
             }
-
-            System.out.println("经过第" + (i + 1) + "轮选择后，数组为" + Arrays.toString(arrNum));
+            showSingleSort(i, arrNum);
         }
+        showSort(arrNum);
     }
 
     /*
@@ -73,7 +73,16 @@ public class SortSimple {
             // 恢复初始状态
             max = 0;
             index = 0;
-            System.out.println("经过第" + (i + 1) + "轮选择后，数组为" + Arrays.toString(arrNum));
+            showSingleSort(i, arrNum);
         }
+        showSort(arrNum);
+    }
+
+    public static void showSingleSort(int i, int[] arr) {
+        System.out.println("第" + (i + 1) + "次的排序结果为：" + Arrays.toString(arr));
+    }
+
+    public static void showSort(int[] arr) {
+        System.out.println(Arrays.toString(arr));
     }
 }
