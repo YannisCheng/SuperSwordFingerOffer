@@ -51,14 +51,28 @@ public class BinarySearchTree<T extends Comparable> implements BinaryTree<T> {
     }
 
     private int size(BinaryTreeNode<T> node) {
-        if (root == null) {
+        int num = 0;
+        if (node == null) {
             return 0;
         } else {
+            // 1 为 root节点本身
+            // System.out.println("left: "+node.getLeft());
+            // System.out.println("right: "+node.getRight());
             return size(node.getLeft()) + 1 + size(node.getRight());
         }
     }
 
     @Override
+    public int height() {
+        return height(root);
+    }
+
+    /**
+     * 高度
+     *
+     * @param node 待查节点
+     * @return 高度
+     */
     public int height(BinaryTreeNode<T> node) {
         if (node == null) {
             return 0;
@@ -79,7 +93,6 @@ public class BinarySearchTree<T extends Comparable> implements BinaryTree<T> {
 
     /**
      * 插入元素
-     * <p>
      * 此方法采用的"递归"的原子操作：
      * 每一个节点的插入都有：节点、节点左子树、节点右子树；
      * 每次插入时都要确定：插入的位置、插入的数值、插入的数值所依赖的节点
@@ -108,10 +121,10 @@ public class BinarySearchTree<T extends Comparable> implements BinaryTree<T> {
         if (node == null) {
             // 每次插入新节点都会执行这一句代码：
             // 待插入节点（根节点、右子树节点<空>、左子树节点<空>）
-            System.out.println("init node == null,data = " + data);
+            //System.out.println("init node == null,data = " + data);
             node = new BinaryTreeNode<T>(data, null, null);
         }
-        System.out.println("start node.data = " + node.getData());
+        //System.out.println("start node.data = " + node.getData());
 
         // 比较结果说明：
         // 如果当前node的'compareTag < 0'，那表示：当前左子树节点还有叶子左子树，还可以继续遍历；
@@ -127,19 +140,19 @@ public class BinarySearchTree<T extends Comparable> implements BinaryTree<T> {
         int compareTag = data.compareTo(node.getData());
         if (compareTag < 0) {
             // 左
-            System.out.println("left: node.data = " + node.getData());
+            //System.out.println("left: node.data = " + node.getData());
             // 每次插入时都要确定：插入的位置、插入的数值、插入的数值所依赖的节点
             node.setLeft(insert(data, node.getLeft()));
         } else if (compareTag > 0) {
             // 右
-            System.out.println("right: node.data = " + node.getData());
+            //System.out.println("right: node.data = " + node.getData());
             node.setRight(insert(data, node.getRight()));
         } else {
             // = = 退出条件,中断自我方法调用 = =
             // 相等:已有元素无需输入
-            System.out.println("相等:已有元素无需输入");
+            //System.out.println("相等:已有元素无需输入");
         }
-        System.out.println("end node : " + node.getData());
+        //System.out.println("end node : " + node.getData());
         // return顺序：由内而外
         return node;
     }
@@ -179,45 +192,102 @@ public class BinarySearchTree<T extends Comparable> implements BinaryTree<T> {
 
     @Override
     public String prevTraverse() {
-        String s = prevTraverse(root);
-        if (s.length() > 0) {
-            s = s.substring(0, s.length());
-        }
-        System.out.println(s);
+        String s = "";
+        s = prevTraverse(root);
         return s;
     }
 
+    /**
+     * 先序遍历
+     *
+     * @param node 待遍历的节点
+     * @return 遍历结果
+     */
     private String prevTraverse(BinaryTreeNode<T> node) {
-        StringBuilder sb = new StringBuilder();
-        if (node != null) {
-            // 访问根节点
-            sb.append(node.getData() + "，");
-            // 访问右子树
-            sb.append(prevTraverse(node.getRight()));
-            // 访问左子树
-            sb.append(prevTraverse(node.getLeft()));
-        }
+        StringBuilder str = new StringBuilder();
+        // 3个节点的"原子操作"
+        /*if (node != null) {
+            str.append(node.getData());
+            str.append(node.getLeft().getData());
+            str.append(node.getRight().getData());
+        }*/
 
-        return sb.toString();
+        if (node != null) {
+            str.append(node.getData());
+            str.append(prevTraverse(node.getLeft()));
+            str.append(prevTraverse(node.getRight()));
+        }/* else {
+            throw new RuntimeException("二叉搜索树不能为空");
+        }*/
+        return str.toString();
     }
 
     @Override
     public String midTraverse() {
-        return null;
+        String str = "";
+        str = midTraverse(root);
+        return str;
+    }
+
+    /**
+     * 中序遍历
+     *
+     * @param node 待遍历的节点
+     * @return 遍历结果
+     */
+    private String midTraverse(BinaryTreeNode<T> node) {
+        StringBuilder str = new StringBuilder();
+        if (node != null) {
+            str.append(midTraverse(node.getLeft()));
+            str.append(node.getData());
+            str.append(midTraverse(node.getRight()));
+        }
+        return str.toString();
     }
 
     @Override
     public String rearTraverse() {
-        return null;
+        String str = "";
+        str = rearTraverse(root);
+        return str;
+    }
+
+    /**
+     * 后序遍历
+     *
+     * @param node 待遍历的节点
+     * @return 遍历结果
+     */
+    private String rearTraverse(BinaryTreeNode<T> node) {
+        StringBuilder str = new StringBuilder();
+        if (node != null) {
+            str.append(rearTraverse(node.getLeft()));
+            str.append(rearTraverse(node.getRight()));
+            str.append(node.getData());
+        }
+        return str.toString();
     }
 
     @Override
     public String levelTraverse() {
-        return null;
+        String str = "";
+
+        return str;
     }
 
+
     @Override
-    public BinaryTreeNode<T> findMax(BinaryTreeNode<T> node) {
+    public BinaryTreeNode<T> findMax() {
+        return findMax(root);
+    }
+
+    /**
+     * 查找树中的最大值
+     *
+     * @param node 待查节点
+     * @return 节点
+     */
+    private BinaryTreeNode<T> findMax(BinaryTreeNode<T> node) {
         if (node == null) {
             return null;
         } else if (node.getRight() == null) {
@@ -228,6 +298,16 @@ public class BinarySearchTree<T extends Comparable> implements BinaryTree<T> {
     }
 
     @Override
+    public BinaryTreeNode<T> findMin() {
+        return findMin(root);
+    }
+
+    /**
+     * 查找树中的最小值
+     *
+     * @param node 待查节点
+     * @return 节点
+     */
     public BinaryTreeNode<T> findMin(BinaryTreeNode<T> node) {
         if (node == null) {
             return null;

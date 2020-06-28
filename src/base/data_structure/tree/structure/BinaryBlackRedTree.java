@@ -23,7 +23,7 @@ public class BinaryBlackRedTree<T extends Comparable> implements BinaryTree<T> {
     }
 
     @Override
-    public int height(BinaryTreeNode<T> node) {
+    public int height() {
         return 0;
     }
 
@@ -58,12 +58,12 @@ public class BinaryBlackRedTree<T extends Comparable> implements BinaryTree<T> {
     }
 
     @Override
-    public BinaryTreeNode<T> findMax(BinaryTreeNode<T> node) {
+    public BinaryTreeNode<T> findMax() {
         return null;
     }
 
     @Override
-    public BinaryTreeNode<T> findMin(BinaryTreeNode<T> node) {
+    public BinaryTreeNode<T> findMin() {
         return null;
     }
 

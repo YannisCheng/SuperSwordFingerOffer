@@ -9,18 +9,26 @@ import base.data_structure.tree.structure.BinarySearchTree;
 public class BinaryTreeTestUtils {
 
     public static void main(String[] args) {
-        int[] array = {4,6,1,8,9,5,7,2};
+        BSTreeTest();
+    }
+
+    /**
+     * 二叉搜索树-测试
+     */
+    private static void BSTreeTest() {
+        int[] array = {4, 6, 1, 8, 9, 5, 7, 2};
         BinarySearchTree<Integer> searchTree = new BinarySearchTree<Integer>();
-        /*for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             searchTree.insert(array[i]);
-        }*/
+        }
 
-        searchTree.insert(4);
-        searchTree.insert(6);
-        searchTree.insert(8);
-        searchTree.insert(9);
+        System.out.println("节点数为：" + searchTree.size());
+        System.out.println("height数为：" + searchTree.height());
+        System.out.println("先序遍历：" + searchTree.prevTraverse());
+        System.out.println("中序遍历：" + searchTree.midTraverse());
+        System.out.println("后序遍历：" + searchTree.rearTraverse());
 
-        searchTree.prevTraverse();
-        System.out.println("size : "+searchTree.size());
+        System.out.println("当前二叉查找树的最大值为：" + searchTree.findMax().getData());
+        System.out.println("当前二叉查找树的最小值为：" + searchTree.findMin().getData());
     }
 }

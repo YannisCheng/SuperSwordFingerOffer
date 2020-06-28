@@ -29,7 +29,7 @@ public interface BinaryTree<T extends Comparable> {
      *
      * @return 高度/深度
      */
-    int height(BinaryTreeNode<T> node);
+    int height();
 
     /**
      * 插入节点
@@ -80,14 +80,14 @@ public interface BinaryTree<T extends Comparable> {
      *
      * @return 最大值
      */
-    BinaryTreeNode<T> findMax(BinaryTreeNode<T> node);
+    BinaryTreeNode<T> findMax();
 
     /**
      * 查找最小值
      *
      * @return 最小值
      */
-    BinaryTreeNode<T> findMin(BinaryTreeNode<T> node);
+    BinaryTreeNode<T> findMin();
 
     /**
      * 根据数值查找对应节点
