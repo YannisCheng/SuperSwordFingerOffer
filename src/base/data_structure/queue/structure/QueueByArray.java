@@ -49,7 +49,7 @@ public class QueueByArray<T> {
         } else {
             rear++;
             queue[rear] = obj;
-            System.out.println("rear++ = "+rear);
+            System.out.println("rear++ = " + rear);
             isPush = true;
         }
         return isPush;

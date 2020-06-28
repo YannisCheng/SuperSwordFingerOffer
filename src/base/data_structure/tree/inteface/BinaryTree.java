@@ -1,6 +1,6 @@
 package base.data_structure.tree.inteface;
 
-import base.data_structure.tree.structure.BinaryTreeNode;
+import base.data_structure.tree.bean.BinaryTreeNode;
 
 /**
  * BinaryTree 二叉树抽象数据类型的顶级接口
@@ -29,7 +29,7 @@ public interface BinaryTree<T extends Comparable> {
      *
      * @return 高度/深度
      */
-    int height();
+    int height(BinaryTreeNode<T> node);
 
     /**
      * 插入节点
@@ -37,7 +37,7 @@ public interface BinaryTree<T extends Comparable> {
      * @param data 待插入节点数据
      * @return true：插入成功
      */
-    boolean insert(T data);
+    void insert(T data);
 
     /**
      * 移除节点
@@ -80,14 +80,14 @@ public interface BinaryTree<T extends Comparable> {
      *
      * @return 最大值
      */
-    T findMax();
+    BinaryTreeNode<T> findMax(BinaryTreeNode<T> node);
 
     /**
      * 查找最小值
      *
      * @return 最小值
      */
-    T finMin();
+    BinaryTreeNode<T> findMin(BinaryTreeNode<T> node);
 
     /**
      * 根据数值查找对应节点

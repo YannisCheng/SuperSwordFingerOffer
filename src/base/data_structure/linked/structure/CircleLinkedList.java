@@ -30,7 +30,7 @@ public class CircleLinkedList {
 
     }
 
-    public BookNode peek(){
+    public BookNode peek() {
         BookNode obj = null;
 
         return obj;

@@ -88,7 +88,7 @@ public class StackByLinked<T> {
             System.out.println("栈内元素数量为0");
         } else {
             obj = head.getNext();
-            System.out.println("peek:"+obj);
+            System.out.println("peek:" + obj);
         }
         return obj;
     }
@@ -108,7 +108,7 @@ public class StackByLinked<T> {
      * @return 数据
      */
     public int size() {
-        System.out.println("栈内元素数量为：" +sizeAll);
+        System.out.println("栈内元素数量为：" + sizeAll);
         return sizeAll;
     }
 }

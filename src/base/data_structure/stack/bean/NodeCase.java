@@ -2,6 +2,7 @@ package base.data_structure.stack.bean;
 
 /**
  * 栈 - 链表实现方式
+ *
  * @param <T> 具体数据类型
  */
 public class NodeCase<T> {
