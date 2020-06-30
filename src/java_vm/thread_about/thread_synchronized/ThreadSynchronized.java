@@ -4,6 +4,7 @@ import java_vm.thread_about.bean.Ticker;
 
 /**
  * ThreadSynchronized 多个线程同时执行
+ * synchronized与lock
  *
  * @author yannischeng  cwj1714@163.com
  * @date 2020/6/29 - 08:57
