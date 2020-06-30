@@ -36,10 +36,10 @@ public class RecursiveAlgorithms {
         // aboutFactorialAdd();
 
         // 棋盘放麦子
-        aboutCheckerboard();
+        // aboutCheckerboard();
 
         // 斐波那契数列
-        aboutFibonacciSequence();
+        // aboutFibonacciSequence();
 
         // 倒序输出一个正整数
         aboutReverseOutputInteger();
@@ -53,7 +53,14 @@ public class RecursiveAlgorithms {
      * 问题描述：一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
      */
     private static void frogJumpingSteps() {
+        System.out.println("青蛙跳台阶跳法有"+frogJump(4)+"种");;
+    }
 
+    private static int frogJump(int n) {
+        if (n <=2) {
+            return 1;
+        }
+        return frogJump(n-1)+frogJump(n-2);
     }
 
     /**
