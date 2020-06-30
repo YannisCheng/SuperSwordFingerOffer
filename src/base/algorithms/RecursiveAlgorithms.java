@@ -3,7 +3,8 @@ package base.algorithms;
 /**
  * RecursiveAlgorithm 递归算法类
  * <p>
- * 递归思想就是将一个问题转换为一个已解决的问题来实现
+ * 递归思想就是将一个问题转换为一个已解决的问题来实现，
+ * 解决问题的关键：忽略小细节,注重大步骤,这就是递归的精华所在.
  * <p>
  * 参考：
  * https://blog.csdn.net/dreamispossible/article/details/90552557
@@ -89,6 +90,16 @@ public class RecursiveAlgorithms {
     }
 
     /**
+     * 把大象装进冰箱需要几步？
+     * 1：打开冰箱门；
+     * 2：把大象装进去（怎么装？不知道）；
+     * 3：关上冰箱门。
+     *
+     * 重要的就是注意参数。
+     * 考虑内部的时候,不要一直把A就当作 from,B当作 buffer,C当作 to；
+     * 而是根据hannota(n,参数1,参数2,参数3),因为A,C也可以充当辅助柱子；
+     * 这里固定不变的是:参数1,为原柱子,2为辅助柱,3为目标柱
+     *
      * @param n      最初A杆上的盘子个数
      * @param from   起始杆
      * @param buffer 缓冲杆
@@ -104,7 +115,6 @@ public class RecursiveAlgorithms {
         // 将编号为1~(n-1)的盘子从A全部挪到缓冲区B
         hannota(n - 1, from, to, buffer);
         System.out.println("from - " + from + " move " + n + " to " + to);
-        //hannota(n, from, buffer, to);
         // 将B杆上留下的(n-1)个盘子从缓冲区B挪到C
         hannota(n - 1, buffer, from, to);
     }
