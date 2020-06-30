@@ -179,14 +179,17 @@ public class RecursiveAlgorithms {
     }
 
     private static int doFsByRecursive(int n) {
+        // 特殊条件
         if (n == 0) {
             return 0;
         }
 
+        // 特殊条件
         if (n == 1) {
             return 1;
         }
 
+        // 正常操作
         return doFsByRecursive(n - 1) + doFsByRecursive(n - 2);
     }
 
