@@ -133,7 +133,7 @@ public class RecursiveAlgorithms {
     private static void aboutFibonacciSequence() {
         // 设置一个较大的值：400。
         // 当值为400时，递归到40个左右时已经非常慢了。
-        // testDoFib();
+        testDoFib();
 
         //doFibonacciSequenceByFor(400);
     }
@@ -142,7 +142,7 @@ public class RecursiveAlgorithms {
         long timeMillis = System.currentTimeMillis();
         // i从1开始
         // 第46个数的斐波那契数列值 = 1134903170
-        for (int i = 1; i < 401; i++) {
+        for (int i = 0; i < 14; i++) {
             int num = doFsByRecursive(i);
             System.out.println("第" + i + "个数的斐波那契数列值 = " + num);
         }
@@ -179,11 +179,11 @@ public class RecursiveAlgorithms {
     }
 
     private static int doFsByRecursive(int n) {
-        if (n == 1) {
+        if (n == 0) {
             return 0;
         }
 
-        if (n == 2) {
+        if (n == 1) {
             return 1;
         }
 
