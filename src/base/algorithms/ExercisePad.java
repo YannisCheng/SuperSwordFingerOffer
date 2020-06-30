@@ -13,29 +13,18 @@ public class ExercisePad {
 
     public static void main(String[] args) {
 
-        maopao();
+
     }
 
-    private static void maopao() {
-        int sortNum = 0;
-        for (int i = 0; i < ARR.length - 1; i++) {
-            for (int j = 0; j < ARR.length - 1 - i; j++) {
-                int temp = 0;
-                sortNum++;
-                if (ARR[j] > ARR[j + 1]) {
-                    temp = ARR[j];
-                    ARR[j] = ARR[j + 1];
-                    ARR[j + 1] = temp;
-                }
-            }
-            showSingleSort(i);
-        }
-        System.out.println("排序次数为：" + sortNum);
-        showSort();
-    }
-
+    /**
+     *      A       B       C
+     * 1层：A->C
+     * 2层：
+     * 3层：
+     *
+     */
     public static void showSingleSort(int i) {
-        System.out.println("第" + (i + 1) + "次的排序结果为：" + Arrays.toString(ARR));
+        System.out.println("第" + (i + 1) + "次的结果为：" + Arrays.toString(ARR));
     }
 
     public static void showSort() {

@@ -2,7 +2,7 @@ package base.algorithms;
 
 /**
  * RecursiveAlgorithm 递归算法类
- *
+ * <p>
  * 递归思想就是将一个问题转换为一个已解决的问题来实现
  * <p>
  * 参考：
@@ -19,6 +19,7 @@ package base.algorithms;
  * @date 2020/6/28 - 10:47
  */
 public class RecursiveAlgorithms {
+    private static int moveCount;
 
     public static void main(String[] args) {
 
@@ -68,7 +69,7 @@ public class RecursiveAlgorithms {
      * 是这样一个数列：1、1、2、3、5、8、13、21、34…，
      */
     private static void aboutFibonacciSequence() {
-        
+
 
     }
 
@@ -81,6 +82,30 @@ public class RecursiveAlgorithms {
      * 并且规定：一次只移动一片，不管在哪根针上，小片必须在大片上面。
      */
     private static void aboutHanota() {
+        // 计数器
+        moveCount = 0;
+        hannota(3, 'A', 'B', 'C');
+        System.out.println("移动次数为：" + moveCount);
+    }
 
+    /**
+     * @param n      最初A杆上的盘子个数
+     * @param from   起始杆
+     * @param buffer 缓冲杆
+     * @param to     目的杆
+     */
+    private static void hannota(int n, char from, char buffer, char to) {
+        moveCount++;
+        // 将最后剩下的编号为n的盘子从A挪到C
+        if (n == 1) {
+            System.out.println("from # " + from + " move " + n + " to " + to);
+            return;
+        }
+        // 将编号为1~(n-1)的盘子从A全部挪到缓冲区B
+        hannota(n - 1, from, to, buffer);
+        System.out.println("from - " + from + " move " + n + " to " + to);
+        //hannota(n, from, buffer, to);
+        // 将B杆上留下的(n-1)个盘子从缓冲区B挪到C
+        hannota(n - 1, buffer, from, to);
     }
 }
