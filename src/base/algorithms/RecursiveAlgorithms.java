@@ -45,7 +45,7 @@ public class RecursiveAlgorithms {
         aboutReverseOutputInteger();
 
         // 青蛙跳台阶问题
-        frogJumpingSteps();
+        //frogJumpingSteps();
     }
 
     /**
@@ -67,7 +67,15 @@ public class RecursiveAlgorithms {
      * 倒序输出一个正整数
      */
     private static void aboutReverseOutputInteger() {
+        reverseOutPut(1374359378);
+    }
 
+    private static void reverseOutPut(int number) {
+        System.out.println(number%10);
+        //System.out.println(number/10);
+        if (number>10) {
+            reverseOutPut(number/10);
+        }
     }
 
     /**
