@@ -27,25 +27,25 @@ public class RecursiveAlgorithms {
 
     public static void main(String[] args) {
         // 汉诺塔
-        // aboutHanota();
+        aboutHanota();
 
         // 阶乘：n!
-        // aboutFactorial();
+        aboutFactorial();
 
         // 阶乘累加：1!+2!+3!+……+n!
-        // aboutFactorialAdd();
+        aboutFactorialAdd();
 
         // 棋盘放麦子
-        // aboutCheckerboard();
+        aboutCheckerboard();
 
         // 斐波那契数列
-        // aboutFibonacciSequence();
+        aboutFibonacciSequence();
 
         // 倒序输出一个正整数
         aboutReverseOutputInteger();
 
         // 青蛙跳台阶问题
-        //frogJumpingSteps();
+        frogJumpingSteps();
     }
 
     /**
@@ -53,28 +53,31 @@ public class RecursiveAlgorithms {
      * 问题描述：一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
      */
     private static void frogJumpingSteps() {
-        System.out.println("青蛙跳台阶跳法有"+frogJump(4)+"种");;
+        System.out.println("青蛙跳台阶跳法有：" + frogJump(4) + "种");
+        System.out.println();
     }
 
     private static int frogJump(int n) {
-        if (n <=2) {
+        if (n <= 2) {
             return 1;
         }
-        return frogJump(n-1)+frogJump(n-2);
+        return frogJump(n - 1) + frogJump(n - 2);
     }
 
     /**
      * 倒序输出一个正整数
      */
     private static void aboutReverseOutputInteger() {
+        System.out.println("倒序输出一个正整数，原数为：1374359378，倒序结果为：");
         reverseOutPut(1374359378);
+        System.out.println();
     }
 
     private static void reverseOutPut(int number) {
-        System.out.println(number%10);
+        System.out.println(number % 10);
         //System.out.println(number/10);
-        if (number>10) {
-            reverseOutPut(number/10);
+        if (number > 10) {
+            reverseOutPut(number / 10);
         }
     }
 
@@ -83,8 +86,9 @@ public class RecursiveAlgorithms {
      * 只关注大步骤，忽略小细节，实现'阶乘'如此轻松。
      */
     private static void aboutFactorial() {
-        int num = factorial(4);
-        System.out.println("阶乘= " + num);
+        int num = factorial(15);
+        System.out.println("阶乘的结果为： " + num);
+        System.out.println();
     }
 
     private static int factorial(int n) {
@@ -98,8 +102,9 @@ public class RecursiveAlgorithms {
      * 阶乘累加
      */
     private static void aboutFactorialAdd() {
-        int num = factorialAdd(4);
+        int num = factorialAdd(15);
         System.out.println("阶乘累加的结果为：" + num);
+        System.out.println();
     }
 
     private static int factorialAdd(int n) {
@@ -123,10 +128,12 @@ public class RecursiveAlgorithms {
      * 直到放满64个格子(2的指数)。
      */
     private static void aboutCheckerboard() {
+        System.out.println("棋盘放麦子");
         // for循环实现
         //System.out.println("麦粒 num is : " + checkBoardByFor());
         // 递归实现
-        System.out.println("麦粒 num is : " + checkBoardByRecursive(5));
+        System.out.println("麦粒 num is: " + checkBoardByRecursive(5));
+        System.out.println();
     }
 
     private static int checkBoardByRecursive(int n) {
@@ -157,11 +164,13 @@ public class RecursiveAlgorithms {
      * 其实真正的数列样式为：0、1、1、2、3、5、8、13、21、34、55、89、144…
      */
     private static void aboutFibonacciSequence() {
+        System.out.println("斐波那契数列");
         // 设置一个较大的值：400。
         // 当值为400时，递归到40个左右时已经非常慢了。
         testDoFib();
 
         //doFibonacciSequenceByFor(400);
+        System.out.println();
     }
 
     private static void testDoFib() {
@@ -228,10 +237,12 @@ public class RecursiveAlgorithms {
      * 并且规定：一次只移动一片，不管在哪根针上，小片必须在大片上面。
      */
     private static void aboutHanota() {
+        System.out.println("汉诺塔：");
         // 计数器
         moveCount = 0;
         hannota(3, 'A', 'B', 'C');
         System.out.println("移动次数为：" + moveCount);
+        System.out.println();
     }
 
     /**
