@@ -14,6 +14,10 @@ import java.util.concurrent.locks.ReentrantLock;
  * <p>
  * 运行结果：
  * 12A34B56C78D910E1112F1314G1516H1718I1920J2122K2324L2526M2728N2930O3132P3334Q3536R3738S3940T4142U4344V4546W4748X4950Y5152Z
+ * <p>
+ * Condition：
+ * https://www.cnblogs.com/windy-xmwh/p/9175058.html
+ * https://www.cnblogs.com/fsmly/p/10721459.html
  *
  * @author yannischeng  cwj1714@163.com
  * @date 2020/7/2 - 10:01
