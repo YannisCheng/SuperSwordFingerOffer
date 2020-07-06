@@ -2,6 +2,8 @@
 
 2020-7-2 21:48:08 周四
 
+参考：https://www.cnblogs.com/dafanjoy/p/9729358.html
+
 
 ## 概念
 
@@ -22,6 +24,10 @@
  unit           ：空闲线程存活时间单位
 
  workQueue      ：工作队列
+                 - 直接提交队列：SynchronousQueue。没有容量，每执行一个插入操作就会阻塞，需要再执行一个删除操作才会被唤醒，反之每一个删除操作也都要等待对应的插入操作。
+                 - 有界任务队列：ArrayBlockingQueue。需设置 "初始容量"。
+                 - 无界任务队列：LinkedBlockingQueue。任务队列可以无限制的添加新的任务，最大线程数为corePoolSize值，此时maximumPoolSize的值是无效的
+                 - 优先任务队列：PriorityBlockingQueue。特殊的无界队列
 
  threadFactory  ：线程工厂
 
