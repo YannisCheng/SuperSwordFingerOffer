@@ -6,6 +6,6 @@ public class SortTestUtils {
 
 
     public static void main(String[] args) {
-        SortSimple.sortMaoPao(ARR);
+        SortSimple.sortInsertion(ARR);
     }
 }

@@ -78,6 +78,35 @@ public class SortSimple {
         showSort(arrNum);
     }
 
+    /**
+     * 排序：03 - 插入
+     * <p>
+     * 参考：
+     * https://www.cnblogs.com/xiaoming0601/p/5862793.html
+     * https://blog.csdn.net/qq_28081081/article/details/80594386
+     * <p>
+     * 时间复杂度O(n2)
+     * {3, 5, 1, 9, 6, 8, 4, 7, 2};
+     */
+    public static void sortInsertion(int[] arrNum) {
+        int index = 0;
+        int temp = 0;
+        //假定第一个元素被放到了正确的位置上,
+        //这样，仅需遍历下标："1 -> (n-1)"
+        for (int i = 1; i < arrNum.length; i++) {
+            // 4
+            index = i;
+            // 6
+            temp = arrNum[i];
+            while (index > 0 && temp < arrNum[index - 1]) {
+                arrNum[index] = arrNum[index - 1];
+                index--;
+            }
+            arrNum[index] = temp;
+        }
+        showSort(arrNum);
+    }
+
     public static void showSingleSort(int i, int[] arr) {
         System.out.println("第" + (i + 1) + "次的排序结果为：" + Arrays.toString(arr));
     }
