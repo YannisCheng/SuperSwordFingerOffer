@@ -29,13 +29,19 @@
                  - 无界任务队列：LinkedBlockingQueue。任务队列可以无限制的添加新的任务，最大线程数为corePoolSize值，此时maximumPoolSize的值是无效的，先进先出的规则
                  - 优先任务队列：PriorityBlockingQueue。特殊的无界队列，自定义规则，根据任务的优先级顺序先后执行
 
- threadFactory  ：线程工厂
+ threadFactory  ：线程工厂- 自定义
 
  handler        ：拒绝策略（处理线程池"超载"的情况）
                 - AbortPolicy策略：该策略会直接抛出异常，阻止系统正常工作；
                 - CallerRunsPolicy策略：如果线程池的线程数量达到上限，该策略会把任务队列中的任务放在调用者线程当中运行；
                 - DiscardOledestPolicy策略：该策略会丢弃任务队列中最老的一个任务（也就是当前任务队列中最先被添加进去的，马上要被执行的那个任务）并尝试再次提交；
                 - DiscardPolicy策略：该策略会默默丢弃无法处理的任务，不予任何处理。当然使用此策略，业务场景中需允许任务的丢失；
+                
+ ThreadPoolExecutor扩展:
+ 
+ 1. beforeExecute：线程池中任务运行前执行
+ 2. afterExecute：线程池中任务运行完毕后执行
+ 3. terminated：线程池退出后执行
  
 ## 使用
 
