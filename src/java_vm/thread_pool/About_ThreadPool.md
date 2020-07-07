@@ -43,6 +43,14 @@
  2. afterExecute：线程池中任务运行完毕后执行
  3. terminated：线程池退出后执行
  
+## 线程池5种状态
+
+1. Running
+2. shutDown
+3. Stop
+4. Tidying
+5. terminated
+ 
 ## 使用
 
  
