@@ -23,7 +23,9 @@ public class SortDivideAndConquer {
         // 最大子序列求和问题。
         // aboutMaxChildSubsequence();
         // 归并排序
-        sort(num, 0, num.length - 1, auk);
+        //sort(num, 0, num.length - 1, auk);
+        System.out.println("array is : " + Arrays.toString(num));
+        sort2(num, 0, num.length - 1, auk);
     }
 
     private static void sort(int[] num, int left, int right, int[] auk) {
@@ -38,33 +40,63 @@ public class SortDivideAndConquer {
         }
     }
 
+    private static void sort2(int[] num, int left, int right, int[] auk) {
+        System.out.printf("oLeft=%d,oRight=%d -> ", left, right);
+        if (left < right) {
+            count++;
+            System.out.printf("count=%d : ", count);
+            int mid = (left + right) / 2;
+            System.out.printf("left=%d,right=%d,mid--> %d ", left, right, mid);
+            for (int i = left; i < mid; i++) {
+                System.out.printf("num[%d]=%d, ", i, num[i]);
+            }
+            System.out.println();
+            sort2(num, left, mid, auk);
+            sort2(num, mid + 1, right, auk);
+            System.out.println();
+            merge(num, left, mid, right, auk);
+        }
+    }
+
     private static void merge(int[] num, int left, int mid, int right, int[] auk) {
+        System.out.println("-----merge()------,left:" + left+", right:"+right+", mid:"+mid+", mid+1:"+(mid+1));
         int tempL = left;
         int tempR = mid + 1;
         int temp = 0;
 
         while (tempL <= mid && tempR <= right) {
             if (num[tempL] < num[tempR]) {
+                System.out.printf("num[tempL] < num[tempR]");
+                System.out.printf(": auk[temp++] = %d ,", auk[temp++]);
+                System.out.printf("num[tempL++] = %d\n", num[tempL++]);
                 auk[temp++] = num[tempL++];
+
             } else {
                 auk[temp++] = num[tempR++];
+                System.out.printf("num[tempL] >= num[tempR]");
+                System.out.printf(": auk[temp++] = %d ,", auk[temp++]);
+                System.out.printf("num[tempR++] = %d\n", num[tempR++]);
             }
         }
 
+        // 对中轴左侧的数据排序
         while (tempL <= mid) {
             auk[temp++] = num[tempL++];
-            System.out.println("tempR <= right-<<<-"+num[tempL++]);
+            System.out.println("tempR <= right-<<<-" + num[tempL++]);
         }
 
+        // 对中轴右侧的数据排序
         while (tempR <= right) {
             auk[temp++] = num[tempR++];
-            System.out.println("tempR <= right->>>-"+num[tempR++]);
+            System.out.println("tempR <= right->>>-" + num[tempR++]);
         }
         temp = 0;
 
+        System.out.println("auk[] is " +Arrays.toString(auk));
         while (left <= right) {
             num[left++] = auk[temp++];
-            System.out.println("auk[temp++]-->-->-"+auk[temp++]);
+            System.out.print("left="+left);
+            System.out.println(", num[left++]-->-->-" + num[left++]);
         }
 
         System.out.println("auk array is : " + Arrays.toString(auk));
