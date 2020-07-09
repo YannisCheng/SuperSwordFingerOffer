@@ -44,8 +44,12 @@
 ## /sort文件夹中的文件说明
 
  -- SortSimple           —— 简单排序：冒泡排序(Bubble Sort)√、选择排序(Selection Sort)、插入排序(Insertion Sort)
- -- SortDivideAndConquer —— 分治排序：快速排序(Quick Sort)（关注中轴的选取方式）、归并排序(Merge Sort)√
+ -- SortDivideAndConquer —— 分治排序：快速排序(Quick Sort)==二分法(dichotomy)<关注中轴的选取方式>、归并排序(Merge Sort)√
  -- SortDistribution     —— 分配排序：桶排序(Bucket Sort)、基数排序(Radix Sort)
  -- SortTreeShape        —— 树状排序：堆排序(Heap Sort)√
  -- SortOther            —— 其他排序：计数排序(Counting Sort)√、希尔排序(Shell Sort)
+ 
+ 注：
+ 
+ - `二分法`与`归并排序`区别：`二分法`需要有一个"基准值"作为"二分"的依据；`归并排序`单纯的根据index进行拆分。
                        
