@@ -59,44 +59,41 @@ public class SortDivideAndConquer {
     }
 
     private static void merge(int[] num, int left, int mid, int right, int[] auk) {
-        System.out.println("-----merge()------,left:" + left+", right:"+right+", mid:"+mid+", mid+1:"+(mid+1));
+        System.out.println("-----merge()------,left:" + left + ", right:" + right + ", mid:" + mid + ", mid+1:" + (mid + 1));
+        // 治：开始的位置
         int tempL = left;
+        // 治：结束的位置
         int tempR = mid + 1;
+        // 记录每个小单位的排序结果
         int temp = 0;
 
+        // 如果拆分后左右2侧的数据都还存在。那么就比较"左右2侧"中的数据的大小
         while (tempL <= mid && tempR <= right) {
+            // 比较两块数据的大小，然后赋值，并且移动下标
             if (num[tempL] < num[tempR]) {
-                System.out.printf("num[tempL] < num[tempR]");
-                System.out.printf(": auk[temp++] = %d ,", auk[temp++]);
-                System.out.printf("num[tempL++] = %d\n", num[tempL++]);
                 auk[temp++] = num[tempL++];
-
             } else {
                 auk[temp++] = num[tempR++];
-                System.out.printf("num[tempL] >= num[tempR]");
-                System.out.printf(": auk[temp++] = %d ,", auk[temp++]);
-                System.out.printf("num[tempR++] = %d\n", num[tempR++]);
             }
         }
 
-        // 对中轴左侧的数据排序
+        // 在只有左侧的数据块中，进行排序
+        // 直接赋值到记录下标
         while (tempL <= mid) {
             auk[temp++] = num[tempL++];
-            System.out.println("tempR <= right-<<<-" + num[tempL++]);
         }
 
-        // 对中轴右侧的数据排序
+        // 在只有右侧的数据块中，进行排序
+        // 直接赋值到记录下标
         while (tempR <= right) {
             auk[temp++] = num[tempR++];
-            System.out.println("tempR <= right->>>-" + num[tempR++]);
         }
+
         temp = 0;
 
-        System.out.println("auk[] is " +Arrays.toString(auk));
+
         while (left <= right) {
             num[left++] = auk[temp++];
-            System.out.print("left="+left);
-            System.out.println(", num[left++]-->-->-" + num[left++]);
         }
 
         System.out.println("auk array is : " + Arrays.toString(auk));
