@@ -22,9 +22,57 @@ public class SortDivideAndConquer {
 
         // 最大子序列求和问题。
         // aboutMaxChildSubsequence();
-        // 归并排序
+
         System.out.println("array is : " + Arrays.toString(num));
-        sort(num, 0, num.length - 1, temp);
+        // 归并排序
+        // sort(num, 0, num.length - 1, temp);
+        // 快速排序（二分法排序）
+        quickSort(num, 0, num.length - 1);
+    }
+
+    private static void quickSort(int[] aim, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+
+        // 设置左右2侧待移动的游标
+        int left = start, right = end;
+        // 第1步：从数组中获取"基准值"
+        int pivot = aim[(start + end) / 2];
+        System.out.printf("新：start=%d,  end=%d, pivot_value=%d\n", start, end, pivot);
+        while (left <= right) {
+            // 向右移动小于基准值的数组值的游标left
+            while (left <= right && aim[left] < pivot) {
+                System.out.printf("移动: left=%d, ", left);
+                left++;
+            }
+
+            // 向左移动大于基准值的数组值的游标right
+            while (left <= right && aim[right] > pivot) {
+                System.out.printf("移动: right=%d, ", right);
+                right--;
+            }
+            System.out.println();
+
+            // 排序：对左侧大于基准值、右侧小于基准值的数排序
+            if (left <= right) {
+                System.out.printf("比较：aim[%d]=%d;aim[%d]=%d\n", left, aim[left], right, aim[right]);
+                int temp = aim[left];
+                aim[left] = aim[right];
+                aim[right] = temp;
+                // 排序结束后继续移动left和right的游标
+                left++;
+                right--;
+                System.out.printf("交换后：left=%d, right=%d，新数组：", left, right);
+                System.out.println(Arrays.toString(num));
+            }
+        }
+        // ---- 至此：第一次二分后的排序结束 ----
+        System.out.println();
+
+        quickSort(num, start, right);
+        quickSort(num, left, end);
+        System.out.println(Arrays.toString(num));
     }
 
     private static void sort(int[] num, int left, int right, int[] temp) {
@@ -57,7 +105,7 @@ public class SortDivideAndConquer {
         // 如果拆分后左右2侧的数据都还存在。那么就比较"左右2侧"中的数据的大小
         while (leftStart <= mid && rightStart <= right) {
             // 比较两块数据的大小，然后赋值，并且移动下标
-            System.out.printf("num[%d]=%d, num[%d]=%d\n",leftStart,num[leftStart],rightStart,num[rightStart]);
+            System.out.printf("num[%d]=%d, num[%d]=%d\n", leftStart, num[leftStart], rightStart, num[rightStart]);
             if (num[leftStart] < num[rightStart]) {
                 System.out.println("&&-- <");
                 // 先赋值，再执行++,
@@ -76,7 +124,7 @@ public class SortDivideAndConquer {
         // 在只有左侧的数据块中，进行排序
         // 直接赋值到记录下标
         while (leftStart <= mid) {
-            System.out.printf("leftStart <= mid: leftStart=%d, mid=%d\n",leftStart,mid);
+            System.out.printf("leftStart <= mid: leftStart=%d, mid=%d\n", leftStart, mid);
             temp[tempIndex++] = num[leftStart++];
             System.out.println("leftStart <= mid --> temp array is : " + Arrays.toString(temp));
         }
@@ -84,7 +132,7 @@ public class SortDivideAndConquer {
         // 在只有右侧的数据块中，进行排序
         // 直接赋值到记录下标
         while (rightStart <= right) {
-            System.out.printf("rightStart <= right: right=%d, mid=%d\n",rightStart,right);
+            System.out.printf("rightStart <= right: right=%d, mid=%d\n", rightStart, right);
             temp[tempIndex++] = num[rightStart++];
             System.out.println("rightStart <= right --> temp array is : " + Arrays.toString(temp));
         }
