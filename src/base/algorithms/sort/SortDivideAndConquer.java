@@ -23,24 +23,11 @@ public class SortDivideAndConquer {
         // 最大子序列求和问题。
         // aboutMaxChildSubsequence();
         // 归并排序
-        //sort(num, 0, num.length - 1, temp);
         System.out.println("array is : " + Arrays.toString(num));
-        sort2(num, 0, num.length - 1, temp);
+        sort(num, 0, num.length - 1, temp);
     }
 
     private static void sort(int[] num, int left, int right, int[] temp) {
-        if (left < right) {
-            int mid = (left + right) / 2;
-            System.out.println("mid --> " + mid);
-            System.out.println("left: " + left + ",mid: " + mid);
-            sort(num, left, mid, temp);
-            System.out.println("(mid+1): " + (mid + 1) + ",right: " + right);
-            sort(num, mid + 1, right, temp);
-            merge(num, left, mid, right, temp);
-        }
-    }
-
-    private static void sort2(int[] num, int left, int right, int[] temp) {
         System.out.printf("oLeft=%d,oRight=%d -> ", left, right);
         if (left < right) {
             count++;
@@ -51,8 +38,8 @@ public class SortDivideAndConquer {
                 System.out.printf("num[%d]=%d, ", i, num[i]);
             }
             System.out.println();
-            sort2(num, left, mid, temp);
-            sort2(num, mid + 1, right, temp);
+            sort(num, left, mid, temp);
+            sort(num, mid + 1, right, temp);
             System.out.println();
             merge(num, left, mid, right, temp);
         }
