@@ -16,11 +16,11 @@
 
 ## 算法策略
 
- - *分治法*
+ - *分治(Divide and Conquer)*
 
- - *归并*
+ - *归并(Merge)*
 
- - *递归法*
+ - *递归(Recursive)*
  
  ### 分治法
  
@@ -43,9 +43,9 @@
 
 ## /sort文件夹中的文件说明
 
- -- SortSimple           —— 简单排序：冒泡排序√、选择排序、插入排序
- -- SortDivideAndConquer —— 分治排序：快速排序（关注中轴的选取方式）、归并排序√
- -- SortDistribution     —— 分配排序：桶排序、基数排序
- -- SortTreeShape        —— 树状排序：堆排序√
- -- SortOther            —— 其他排序：计数排序√、希尔排序
+ -- SortSimple           —— 简单排序：冒泡排序(Bubble Sort)√、选择排序(Selection Sort)、插入排序(Insertion Sort)
+ -- SortDivideAndConquer —— 分治排序：快速排序(Quick Sort)（关注中轴的选取方式）、归并排序(Merge Sort)√
+ -- SortDistribution     —— 分配排序：桶排序(Bucket Sort)、基数排序(Radix Sort)
+ -- SortTreeShape        —— 树状排序：堆排序(Heap Sort)√
+ -- SortOther            —— 其他排序：计数排序(Counting Sort)√、希尔排序(Shell Sort)
                        
