@@ -60,9 +60,9 @@ public class SortDivideAndConquer {
 
     private static void merge(int[] num, int left, int mid, int right, int[] auk) {
         System.out.println("-----merge()------,left:" + left + ", right:" + right + ", mid:" + mid + ", mid+1:" + (mid + 1));
-        // 治：开始的位置
+        // 治：左侧开始的位置
         int tempL = left;
-        // 治：结束的位置
+        // 治：右侧开始的位置
         int tempR = mid + 1;
         // 记录每个小单位的排序结果
         int temp = 0;
@@ -70,24 +70,32 @@ public class SortDivideAndConquer {
         // 如果拆分后左右2侧的数据都还存在。那么就比较"左右2侧"中的数据的大小
         while (tempL <= mid && tempR <= right) {
             // 比较两块数据的大小，然后赋值，并且移动下标
+            System.out.printf("num[%d]=%d, num[%d]=%d\n",tempL,num[tempL],tempR,num[tempR]);
             if (num[tempL] < num[tempR]) {
+                System.out.println("&&-- <");
                 // 先赋值，再执行++
                 auk[temp++] = num[tempL++];
             } else {
+                System.out.println("&&-- >");
                 auk[temp++] = num[tempR++];
             }
         }
+        System.out.println("&& auk array is : " + Arrays.toString(auk));
 
         // 在只有左侧的数据块中，进行排序
         // 直接赋值到记录下标
         while (tempL <= mid) {
+            System.out.printf("tempL <= mid: tempL=%d, mid=%d\n",tempL,mid);
             auk[temp++] = num[tempL++];
+            System.out.println("tempL <= mid --> auk array is : " + Arrays.toString(auk));
         }
 
         // 在只有右侧的数据块中，进行排序
         // 直接赋值到记录下标
         while (tempR <= right) {
+            System.out.printf("tempR <= right: right=%d, mid=%d\n",tempR,right);
             auk[temp++] = num[tempR++];
+            System.out.println("tempR <= right --> auk array is : " + Arrays.toString(auk));
         }
 
         System.out.println("auk array is : " + Arrays.toString(auk));
@@ -169,6 +177,36 @@ public class SortDivideAndConquer {
          * left <= right:num[7]=8
          * left <= right:num[8]=9
          * num array is : [1, 2, 3, 4, 5, 6, 7, 8, 9]
+         *
+         * 小范围比较过程：
+         * array is : [3, 5, 1]
+         * oLeft=0,oRight=2 -> count=1 : left=0,right=2,mid--> 1 num[0]=3,
+         * oLeft=0,oRight=1 -> count=2 : left=0,right=1,mid--> 0
+         * oLeft=0,oRight=0 -> oLeft=1,oRight=1 ->
+         * -----merge()------,left:0, right:1, mid:0, mid+1:1
+         * num[0]=3, num[1]=5
+         * &&-- <
+         * && auk array is : [3, 0, 0]
+         * tempR <= right: right=1, mid=1
+         * tempR <= right --> auk array is : [3, 5, 0]
+         * auk array is : [3, 5, 0]
+         * left <= right:num[0]=3
+         * left <= right:num[1]=5
+         * num array is : [3, 5, 1]
+         * oLeft=2,oRight=2 ->
+         * -----merge()------,left:0, right:2, mid:1, mid+1:2
+         * num[0]=3, num[2]=1
+         * &&-- >
+         * && auk array is : [1, 5, 0]
+         * tempL <= mid: tempL=0, mid=1
+         * tempL <= mid --> auk array is : [1, 3, 0]
+         * tempL <= mid: tempL=1, mid=1
+         * tempL <= mid --> auk array is : [1, 3, 5]
+         * auk array is : [1, 3, 5]
+         * left <= right:num[0]=1
+         * left <= right:num[1]=3
+         * left <= right:num[2]=5
+         * num array is : [1, 3, 5]
          */
     }
 
