@@ -71,6 +71,7 @@ public class SortDivideAndConquer {
         while (tempL <= mid && tempR <= right) {
             // 比较两块数据的大小，然后赋值，并且移动下标
             if (num[tempL] < num[tempR]) {
+                // 先赋值，再执行++
                 auk[temp++] = num[tempL++];
             } else {
                 auk[temp++] = num[tempR++];
@@ -93,10 +94,86 @@ public class SortDivideAndConquer {
 
 
         while (left <= right) {
+            System.out.printf("left <= right:num[%d]=%d\n", left, auk[temp]);
             num[left++] = auk[temp++];
         }
 
         System.out.println("auk array is : " + Arrays.toString(auk));
+        System.out.println("num array is : " + Arrays.toString(num));
+        /*
+         * 运行结果：
+         *
+         * array is : [3, 5, 1, 9, 6, 8, 4, 7, 2]
+         * oLeft=0,oRight=8 -> count=1 : left=0,right=8,mid--> 4 num[0]=3, num[1]=5, num[2]=1, num[3]=9,
+         * oLeft=0,oRight=4 -> count=2 : left=0,right=4,mid--> 2 num[0]=3, num[1]=5,
+         * oLeft=0,oRight=2 -> count=3 : left=0,right=2,mid--> 1 num[0]=3,
+         * oLeft=0,oRight=1 -> count=4 : left=0,right=1,mid--> 0
+         * oLeft=0,oRight=0 -> oLeft=1,oRight=1 ->
+         * -----merge()------,left:0, right:1, mid:0, mid+1:1
+         * left <= right:num[0]=3
+         * left <= right:num[1]=5
+         * auk array is : [3, 5, 0, 0, 0, 0, 0, 0, 0]
+         * num array is : [3, 5, 1, 9, 6, 8, 4, 7, 2]
+         * oLeft=2,oRight=2 ->
+         * -----merge()------,left:0, right:2, mid:1, mid+1:2
+         * left <= right:num[0]=1
+         * left <= right:num[1]=3
+         * left <= right:num[2]=5
+         * auk array is : [1, 3, 5, 0, 0, 0, 0, 0, 0]
+         * num array is : [1, 3, 5, 9, 6, 8, 4, 7, 2]
+         * oLeft=3,oRight=4 -> count=5 : left=3,right=4,mid--> 3
+         * oLeft=3,oRight=3 -> oLeft=4,oRight=4 ->
+         * -----merge()------,left:3, right:4, mid:3, mid+1:4
+         * left <= right:num[3]=6
+         * left <= right:num[4]=9
+         * auk array is : [6, 9, 5, 0, 0, 0, 0, 0, 0]
+         * num array is : [1, 3, 5, 6, 9, 8, 4, 7, 2]
+         *
+         * -----merge()------,left:0, right:4, mid:2, mid+1:3
+         * left <= right:num[0]=1
+         * left <= right:num[1]=3
+         * left <= right:num[2]=5
+         * left <= right:num[3]=6
+         * left <= right:num[4]=9
+         * auk array is : [1, 3, 5, 6, 9, 0, 0, 0, 0]
+         * num array is : [1, 3, 5, 6, 9, 8, 4, 7, 2]
+         * oLeft=5,oRight=8 -> count=6 : left=5,right=8,mid--> 6 num[5]=8,
+         * oLeft=5,oRight=6 -> count=7 : left=5,right=6,mid--> 5
+         * oLeft=5,oRight=5 -> oLeft=6,oRight=6 ->
+         * -----merge()------,left:5, right:6, mid:5, mid+1:6
+         * left <= right:num[5]=4
+         * left <= right:num[6]=8
+         * auk array is : [4, 8, 5, 6, 9, 0, 0, 0, 0]
+         * num array is : [1, 3, 5, 6, 9, 4, 8, 7, 2]
+         * oLeft=7,oRight=8 -> count=8 : left=7,right=8,mid--> 7
+         * oLeft=7,oRight=7 -> oLeft=8,oRight=8 ->
+         * -----merge()------,left:7, right:8, mid:7, mid+1:8
+         * left <= right:num[7]=2
+         * left <= right:num[8]=7
+         * auk array is : [2, 7, 5, 6, 9, 0, 0, 0, 0]
+         * num array is : [1, 3, 5, 6, 9, 4, 8, 2, 7]
+         *
+         * -----merge()------,left:5, right:8, mid:6, mid+1:7
+         * left <= right:num[5]=2
+         * left <= right:num[6]=4
+         * left <= right:num[7]=7
+         * left <= right:num[8]=8
+         * auk array is : [2, 4, 7, 8, 9, 0, 0, 0, 0]
+         * num array is : [1, 3, 5, 6, 9, 2, 4, 7, 8]
+         *
+         * -----merge()------,left:0, right:8, mid:4, mid+1:5
+         * left <= right:num[0]=1
+         * left <= right:num[1]=2
+         * left <= right:num[2]=3
+         * left <= right:num[3]=4
+         * left <= right:num[4]=5
+         * left <= right:num[5]=6
+         * left <= right:num[6]=7
+         * left <= right:num[7]=8
+         * left <= right:num[8]=9
+         * auk array is : [1, 2, 3, 4, 5, 6, 7, 8, 9]
+         * num array is : [1, 2, 3, 4, 5, 6, 7, 8, 9]
+         */
     }
 
     /**
