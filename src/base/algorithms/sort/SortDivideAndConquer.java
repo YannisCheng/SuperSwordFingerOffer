@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class SortDivideAndConquer {
 
     public static final int[] num = {3, 5, 1, 9, 6, 8, 4, 7, 2};
-    public static final int[] auk = new int[num.length];
+    public static final int[] temp = new int[num.length];
     private static int count = 0;
 
     public static void main(String[] args) {
@@ -23,24 +23,24 @@ public class SortDivideAndConquer {
         // 最大子序列求和问题。
         // aboutMaxChildSubsequence();
         // 归并排序
-        //sort(num, 0, num.length - 1, auk);
+        //sort(num, 0, num.length - 1, temp);
         System.out.println("array is : " + Arrays.toString(num));
-        sort2(num, 0, num.length - 1, auk);
+        sort2(num, 0, num.length - 1, temp);
     }
 
-    private static void sort(int[] num, int left, int right, int[] auk) {
+    private static void sort(int[] num, int left, int right, int[] temp) {
         if (left < right) {
             int mid = (left + right) / 2;
             System.out.println("mid --> " + mid);
             System.out.println("left: " + left + ",mid: " + mid);
-            sort(num, left, mid, auk);
+            sort(num, left, mid, temp);
             System.out.println("(mid+1): " + (mid + 1) + ",right: " + right);
-            sort(num, mid + 1, right, auk);
-            merge(num, left, mid, right, auk);
+            sort(num, mid + 1, right, temp);
+            merge(num, left, mid, right, temp);
         }
     }
 
-    private static void sort2(int[] num, int left, int right, int[] auk) {
+    private static void sort2(int[] num, int left, int right, int[] temp) {
         System.out.printf("oLeft=%d,oRight=%d -> ", left, right);
         if (left < right) {
             count++;
@@ -51,58 +51,63 @@ public class SortDivideAndConquer {
                 System.out.printf("num[%d]=%d, ", i, num[i]);
             }
             System.out.println();
-            sort2(num, left, mid, auk);
-            sort2(num, mid + 1, right, auk);
+            sort2(num, left, mid, temp);
+            sort2(num, mid + 1, right, temp);
             System.out.println();
-            merge(num, left, mid, right, auk);
+            merge(num, left, mid, right, temp);
         }
     }
 
-    private static void merge(int[] num, int left, int mid, int right, int[] auk) {
+    private static void merge(int[] num, int left, int mid, int right, int[] temp) {
         System.out.println("-----merge()------,left:" + left + ", right:" + right + ", mid:" + mid + ", mid+1:" + (mid + 1));
         // 治：左侧开始的位置
-        int tempL = left;
+        int leftStart = left;
         // 治：右侧开始的位置
-        int tempR = mid + 1;
+        int rightStart = mid + 1;
         // 记录每个小单位的排序结果
-        int temp = 0;
+        int tempIndex = 0;
 
         // 如果拆分后左右2侧的数据都还存在。那么就比较"左右2侧"中的数据的大小
-        while (tempL <= mid && tempR <= right) {
+        while (leftStart <= mid && rightStart <= right) {
             // 比较两块数据的大小，然后赋值，并且移动下标
-            System.out.printf("num[%d]=%d, num[%d]=%d\n",tempL,num[tempL],tempR,num[tempR]);
-            if (num[tempL] < num[tempR]) {
+            System.out.printf("num[%d]=%d, num[%d]=%d\n",leftStart,num[leftStart],rightStart,num[rightStart]);
+            if (num[leftStart] < num[rightStart]) {
                 System.out.println("&&-- <");
-                // 先赋值，再执行++
-                auk[temp++] = num[tempL++];
+                // 先赋值，再执行++,
+                // temp[tempIndex++] = num[leftStart++] 等价于：
+                // temp[tempIndex] = num[leftStart]
+                // tempIndex++;
+                // leftStart++
+                temp[tempIndex++] = num[leftStart++];
             } else {
                 System.out.println("&&-- >");
-                auk[temp++] = num[tempR++];
+                temp[tempIndex++] = num[rightStart++];
             }
         }
-        System.out.println("&& auk array is : " + Arrays.toString(auk));
+        System.out.println("&& temp array is : " + Arrays.toString(temp));
 
         // 在只有左侧的数据块中，进行排序
         // 直接赋值到记录下标
-        while (tempL <= mid) {
-            System.out.printf("tempL <= mid: tempL=%d, mid=%d\n",tempL,mid);
-            auk[temp++] = num[tempL++];
-            System.out.println("tempL <= mid --> auk array is : " + Arrays.toString(auk));
+        while (leftStart <= mid) {
+            System.out.printf("leftStart <= mid: leftStart=%d, mid=%d\n",leftStart,mid);
+            temp[tempIndex++] = num[leftStart++];
+            System.out.println("leftStart <= mid --> temp array is : " + Arrays.toString(temp));
         }
 
         // 在只有右侧的数据块中，进行排序
         // 直接赋值到记录下标
-        while (tempR <= right) {
-            System.out.printf("tempR <= right: right=%d, mid=%d\n",tempR,right);
-            auk[temp++] = num[tempR++];
-            System.out.println("tempR <= right --> auk array is : " + Arrays.toString(auk));
+        while (rightStart <= right) {
+            System.out.printf("rightStart <= right: right=%d, mid=%d\n",rightStart,right);
+            temp[tempIndex++] = num[rightStart++];
+            System.out.println("rightStart <= right --> temp array is : " + Arrays.toString(temp));
         }
 
-        System.out.println("auk array is : " + Arrays.toString(auk));
-        temp = 0;
+        System.out.println("temp array is : " + Arrays.toString(temp));
+        // ---- 运行到此处的结果是：将[left-right]index范围内的数据进行排序，结果存放在tempIndex[]中 ----
+        tempIndex = 0;
         while (left <= right) {
-            System.out.printf("left <= right:num[%d]=%d\n", left, auk[temp]);
-            num[left++] = auk[temp++];
+            System.out.printf("left <= right:num[%d]=%d\n", left, temp[tempIndex]);
+            num[left++] = temp[tempIndex++];
         }
         System.out.println("num array is : " + Arrays.toString(num));
         /**
@@ -114,13 +119,13 @@ public class SortDivideAndConquer {
          * oLeft=0,oRight=1 -> count=4 : left=0,right=1,mid--> 0
          * oLeft=0,oRight=0 -> oLeft=1,oRight=1 ->
          * -----merge()------,left:0, right:1, mid:0, mid+1:1
-         * auk array is : [3, 5, 0, 0, 0, 0, 0, 0, 0]
+         * temp array is : [3, 5, 0, 0, 0, 0, 0, 0, 0]
          * left <= right:num[0]=3
          * left <= right:num[1]=5
          * num array is : [3, 5, 1, 9, 6, 8, 4, 7, 2]
          * oLeft=2,oRight=2 ->
          * -----merge()------,left:0, right:2, mid:1, mid+1:2
-         * auk array is : [1, 3, 5, 0, 0, 0, 0, 0, 0]
+         * temp array is : [1, 3, 5, 0, 0, 0, 0, 0, 0]
          * left <= right:num[0]=1
          * left <= right:num[1]=3
          * left <= right:num[2]=5
@@ -128,13 +133,13 @@ public class SortDivideAndConquer {
          * oLeft=3,oRight=4 -> count=5 : left=3,right=4,mid--> 3
          * oLeft=3,oRight=3 -> oLeft=4,oRight=4 ->
          * -----merge()------,left:3, right:4, mid:3, mid+1:4
-         * auk array is : [6, 9, 5, 0, 0, 0, 0, 0, 0]
+         * temp array is : [6, 9, 5, 0, 0, 0, 0, 0, 0]
          * left <= right:num[3]=6
          * left <= right:num[4]=9
          * num array is : [1, 3, 5, 6, 9, 8, 4, 7, 2]
          *
          * -----merge()------,left:0, right:4, mid:2, mid+1:3
-         * auk array is : [1, 3, 5, 6, 9, 0, 0, 0, 0]
+         * temp array is : [1, 3, 5, 6, 9, 0, 0, 0, 0]
          * left <= right:num[0]=1
          * left <= right:num[1]=3
          * left <= right:num[2]=5
@@ -145,20 +150,20 @@ public class SortDivideAndConquer {
          * oLeft=5,oRight=6 -> count=7 : left=5,right=6,mid--> 5
          * oLeft=5,oRight=5 -> oLeft=6,oRight=6 ->
          * -----merge()------,left:5, right:6, mid:5, mid+1:6
-         * auk array is : [4, 8, 5, 6, 9, 0, 0, 0, 0]
+         * temp array is : [4, 8, 5, 6, 9, 0, 0, 0, 0]
          * left <= right:num[5]=4
          * left <= right:num[6]=8
          * num array is : [1, 3, 5, 6, 9, 4, 8, 7, 2]
          * oLeft=7,oRight=8 -> count=8 : left=7,right=8,mid--> 7
          * oLeft=7,oRight=7 -> oLeft=8,oRight=8 ->
          * -----merge()------,left:7, right:8, mid:7, mid+1:8
-         * auk array is : [2, 7, 5, 6, 9, 0, 0, 0, 0]
+         * temp array is : [2, 7, 5, 6, 9, 0, 0, 0, 0]
          * left <= right:num[7]=2
          * left <= right:num[8]=7
          * num array is : [1, 3, 5, 6, 9, 4, 8, 2, 7]
          *
          * -----merge()------,left:5, right:8, mid:6, mid+1:7
-         * auk array is : [2, 4, 7, 8, 9, 0, 0, 0, 0]
+         * temp array is : [2, 4, 7, 8, 9, 0, 0, 0, 0]
          * left <= right:num[5]=2
          * left <= right:num[6]=4
          * left <= right:num[7]=7
@@ -166,7 +171,7 @@ public class SortDivideAndConquer {
          * num array is : [1, 3, 5, 6, 9, 2, 4, 7, 8]
          *
          * -----merge()------,left:0, right:8, mid:4, mid+1:5
-         * auk array is : [1, 2, 3, 4, 5, 6, 7, 8, 9]
+         * temp array is : [1, 2, 3, 4, 5, 6, 7, 8, 9]
          * left <= right:num[0]=1
          * left <= right:num[1]=2
          * left <= right:num[2]=3
@@ -186,10 +191,10 @@ public class SortDivideAndConquer {
          * -----merge()------,left:0, right:1, mid:0, mid+1:1
          * num[0]=3, num[1]=5
          * &&-- <
-         * && auk array is : [3, 0, 0]
-         * tempR <= right: right=1, mid=1
-         * tempR <= right --> auk array is : [3, 5, 0]
-         * auk array is : [3, 5, 0]
+         * && temp array is : [3, 0, 0]
+         * rightStart <= right: right=1, mid=1
+         * rightStart <= right --> temp array is : [3, 5, 0]
+         * temp array is : [3, 5, 0]
          * left <= right:num[0]=3
          * left <= right:num[1]=5
          * num array is : [3, 5, 1]
@@ -197,12 +202,12 @@ public class SortDivideAndConquer {
          * -----merge()------,left:0, right:2, mid:1, mid+1:2
          * num[0]=3, num[2]=1
          * &&-- >
-         * && auk array is : [1, 5, 0]
-         * tempL <= mid: tempL=0, mid=1
-         * tempL <= mid --> auk array is : [1, 3, 0]
-         * tempL <= mid: tempL=1, mid=1
-         * tempL <= mid --> auk array is : [1, 3, 5]
-         * auk array is : [1, 3, 5]
+         * && temp array is : [1, 5, 0]
+         * leftStart <= mid: leftStart=0, mid=1
+         * leftStart <= mid --> temp array is : [1, 3, 0]
+         * leftStart <= mid: leftStart=1, mid=1
+         * leftStart <= mid --> temp array is : [1, 3, 5]
+         * temp array is : [1, 3, 5]
          * left <= right:num[0]=1
          * left <= right:num[1]=3
          * left <= right:num[2]=5
