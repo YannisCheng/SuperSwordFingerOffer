@@ -105,6 +105,7 @@ public class SortDivideAndConquer {
         System.out.println("temp array is : " + Arrays.toString(temp));
         // ---- 运行到此处的结果是：将[left-right]index范围内的数据进行排序，结果存放在tempIndex[]中 ----
         tempIndex = 0;
+        // 添加最新排序结果的起始范围[left-right]
         while (left <= right) {
             System.out.printf("left <= right:num[%d]=%d\n", left, temp[tempIndex]);
             num[left++] = temp[tempIndex++];
