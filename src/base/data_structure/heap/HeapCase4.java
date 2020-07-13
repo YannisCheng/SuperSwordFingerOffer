@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * heap structure
+ * refrence:https://blog.csdn.net/l0919160205/article/details/90584394?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-4
  */
 public class HeapCase4 {
 
@@ -19,6 +20,8 @@ public class HeapCase4 {
         for (int i = 0; i < array.length; i++) {
             System.out.println(heapCase4.removeMax());
         }
+
+        heapCase4.heapSort(array,array.length);
     }
 
     int currentNum;
@@ -79,6 +82,38 @@ public class HeapCase4 {
             data[i] = data[leftChild];
             data[leftChild] = temp;
             i=leftChild;
+        }
+    }
+
+    public void shiftDown2(int[] arr, int all, int k){
+        while (2*k+1 <all) {
+            int left = 2*k+1;
+            if (left+1<all && arr[left+1] > arr[left]) {
+                left++;
+            }
+            if (arr[k] > arr[left]) {
+                break;
+            }
+
+            int temp = arr[k];
+            arr[k] = arr[left];
+            arr[left] = temp;
+            k = left;
+        }
+    }
+
+    private  void heapSort(int[] array, int n) {
+        // start with 0, the last one is : array.length-1;
+        // !leave child = (array.length-1-1)/2
+        for (int j = (n-2)/2; j >=0 ; j--) {
+            shiftDown2(array,n,j);
+        }
+        System.out.println(Arrays.toString(array));
+
+        for (int i = n-1; i >=0; i--) {
+            System.out.println(array[0]);
+            array[0] = array[i];
+            shiftDown2(array,i,0);
         }
     }
 
