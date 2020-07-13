@@ -13,34 +13,74 @@ public class ExercisePad {
     private static final int[] TEMP = new int[ARR.length];
 
     public static void main(String[] args) {
-        quickSort(ARR, 0, ARR.length - 1);
-        showSort();
+        ExercisePad pad = new ExercisePad(ARR.length);
+        for (int i = 0; i < ARR.length; i++) {
+            pad.insert(ARR[i]);
+        }
+        System.out.println(Arrays.toString(pad.data));
+        pad.remove();
+        System.out.println(Arrays.toString(pad.data));
     }
 
-    private static void quickSort(int[] arr, int start, int end) {
-        if (start >= end) {
+    private int allNum;
+    private int currenNum;
+    private int[] data;
+
+    public ExercisePad(int allNum) {
+        this.allNum = allNum;
+        data = new int[allNum+1];
+        currenNum = 1;
+    }
+
+    public  void insert(int item){
+        if (currenNum > allNum) {
             return;
         }
-        int left = start;
-        int right = end;
-        int pivot = arr[(start + end) / 2];
-
-        while (left <= right) {
-            while (left <= right && arr[left] < pivot) {
-                left++;
-            }
-            while (left <= right && arr[right] > pivot) {
-                right--;
-            }
-
-            if (left<=right) {
-                int temp = arr[left];
-                arr[left] = arr[right];
-                arr[right] = temp;
-                left++;
-                right++;
-            }
+        data[currenNum] = item;
+        int currentItem = currenNum;
+        while (currentItem/2 >0 && data[currentItem] >data[currentItem/2]) {
+            int temp = data[currentItem];
+            data[currentItem] = data[currentItem/2];
+            data[currentItem/2] = temp;
+            currentItem = currentItem/2;
         }
+        currenNum++;
+    }
+
+    public void remove(){
+        if (currenNum == 1) {
+            return;
+        }
+
+        currenNum--;
+        data[1] = data[currenNum];
+        data[currenNum] = 0;
+        heapIfy(data,currenNum,1);
+
+    }
+
+    private void heapIfy(int[] data, int n, int i) {
+        int maxIndex = i;
+        while (true) {
+            if (2*i < n && data[2*i] > data[i]) {
+                maxIndex = 2*i;
+            }
+
+            if (2*i+1 < n && data[2*i+1] >data[maxIndex]) {
+                maxIndex = 2*i+1;
+            }
+
+            if (maxIndex == i) {
+                break;
+            }
+
+            int temp = data[i];
+            data[i] = data[maxIndex];
+            data[maxIndex] = temp;
+
+            i = maxIndex;
+        }
+
     }
 
     public static void showSingleSort(int i) {
