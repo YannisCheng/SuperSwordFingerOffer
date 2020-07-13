@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * HeapCase 数据结构 - 堆
+ * 关键：数组index与二叉树位置关系的映射关系
  *
  * @author yannischeng  cwj1714@163.com
  * @date 2020/7/10 16:10
@@ -12,10 +13,15 @@ public class HeapCase {
 
     public static void main(String[] args) {
         int[] temp = {2, 5, 1, 9, 0, 4, 6, 3};
-        HeapCase heapCase = new HeapCase(10);
+        HeapCase heapCase = new HeapCase(temp.length);
         for (int i = 0; i < temp.length; i++) {
             heapCase.insert(temp[i]);
         }
+        System.out.println(Arrays.toString(heapCase.getTempArr()));
+
+        heapCase.removeMax();
+        System.out.println(Arrays.toString(heapCase.getTempArr()));
+        heapCase.removeMax();
         System.out.println(Arrays.toString(heapCase.getTempArr()));
 
     }
@@ -48,7 +54,7 @@ public class HeapCase {
      * -> 构造"堆"数据结构
      */
     public void insert(int item) {
-        if (currentNum >= allNum) {
+        if (currentNum > allNum) {
             return;
         }
         //先将节点插入堆尾
@@ -91,7 +97,38 @@ public class HeapCase {
         return data;
     }
 
-    public void remove() {
+    public void removeMax() {
+        if (currentNum == 1) {
+            return;
+        }
+        System.out.println("移除元素："+data[1]);
+        currentNum--;
+        data[1] = data[currentNum];
+        data[currentNum] = 0;
+        heapIfy(data, currentNum, 1);
+        System.out.println(currentNum);
+    }
+
+    private void heapIfy(int[] data, int n, int i) {
+        while (true) {
+            int currentMax = i;
+            if (2 * i <= n && data[i] < data[2 * i]) {
+                currentMax = 2 * i;
+            }
+
+            if (2 * i + 1 <= n && data[currentMax] < data[2 * i + 1]) {
+                currentMax = 2 * i + 1;
+            }
+            if (currentMax == i) {
+                break;
+            }
+
+            int temp = data[i];
+            data[i] = data[currentMax];
+            data[currentMax] = temp;
+
+            i = currentMax;
+        }
 
     }
 }
