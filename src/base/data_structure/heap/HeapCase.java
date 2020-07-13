@@ -5,6 +5,13 @@ import java.util.Arrays;
 /**
  * HeapCase 数据结构 - 堆
  * 关键：数组index与二叉树位置关系的映射关系
+ * "堆"数据结构操作：
+ * 1、建堆
+ * 2、删除堆中元素
+ *
+ * "堆排序"：
+ * 1、建堆
+ * 2、移除元素
  *
  * @author yannischeng  cwj1714@163.com
  * @date 2020/7/10 16:10
@@ -12,6 +19,23 @@ import java.util.Arrays;
 public class HeapCase {
 
     public static void main(String[] args) {
+        //test();
+        sort();
+    }
+
+    private static void sort() {
+        int[] temp = {2, 5, 1, 9, 0, 4, 6, 3};
+        HeapCase heapCase = new HeapCase(temp.length);
+        for (int i = 0; i < temp.length; i++) {
+            heapCase.insert(temp[i]);
+        }
+
+        for (int i = 0; i < heapCase.data.length; i++) {
+            heapCase.removeMax();
+        }
+    }
+
+    private static void test() {
         int[] temp = {2, 5, 1, 9, 0, 4, 6, 3};
         HeapCase heapCase = new HeapCase(temp.length);
         for (int i = 0; i < temp.length; i++) {
@@ -23,7 +47,6 @@ public class HeapCase {
         System.out.println(Arrays.toString(heapCase.getTempArr()));
         heapCase.removeMax();
         System.out.println(Arrays.toString(heapCase.getTempArr()));
-
     }
 
     /**
