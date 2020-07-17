@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * SortOther 排序 - 其他
- * 1、计数排序（必学）
+ * 1、计数排序（必学）：参考：https://www.cnblogs.com/xiaochuan94/p/11198610.html
  * 2、希尔排序
  *
  * <p>
