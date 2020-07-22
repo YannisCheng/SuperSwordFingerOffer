@@ -1,4 +1,4 @@
-package base.design_patterns;
+package base.design_patterns.builder;
 
 public class Person {
 

@@ -1,8 +1,36 @@
 # 设计模式
 
+共23种，可分为： `创建型`、`行为型`、`结构型`3个大类。
+
+ 1. 创建型
+
+ - 单例
+ - builder建造者（示例：Person.java）
  - 工厂模式
  
+ 2. 行为型
+ 
+ - 观察者
+ 
+ 3. 结构型
+ 
+ - 代理模式
+ 
+ 
+ ## Builder模式
+ 
+ 
+ 
+ ## 代理模式
+ 
+ > 参考：https://www.jianshu.com/p/a0e687e0904f
+ 
+  - 静态代理
+  - 动态代理
+  
+  
 ## 工厂模式
+
 > 参考：https://www.cnblogs.com/panxuejun/p/7811213.html
 > 参考：https://blog.csdn.net/jason0539/article/details/44976775
 > 参考：https://www.jb51.net/article/85699.htm
