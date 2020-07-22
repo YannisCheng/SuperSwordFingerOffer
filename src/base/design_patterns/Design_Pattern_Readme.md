@@ -25,8 +25,8 @@
  
  > 参考：https://www.jianshu.com/p/a0e687e0904f
  
-  - 静态代理
-  - 动态代理
+  - 静态代理。静态体现：程序 `运行前` 由编码人员已经手动编写的被代理类。
+  - 动态代理。动态体现：在程序 `运行时` 才根据 `运行前` 由编码人员设定的 `被代理类的类型` 创建 `具体代理类`。  
   
   ## 动态代理- Proxy与InvocationHandler
   
@@ -126,9 +126,6 @@ private static final class ProxyClassFactory implements BiFunction<ClassLoader, 
 }
 ~~~
 
-综上所述，一个运行时具体代理类的产生是通过：
-
-1. 
     
 ## 工厂模式
 
