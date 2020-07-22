@@ -1,6 +1,6 @@
 package base.design_patterns.proxy;
 
-import base.design_patterns.proxy.dynamic_proxy.DynamicProxy;
+import base.design_patterns.proxy.dynamic_proxy.InvocationImpl;
 import base.design_patterns.proxy.static_proxy.ProxyPeople;
 import base.design_patterns.proxy.static_proxy.RealPeople;
 import sun.misc.ProxyGenerator;
@@ -41,7 +41,7 @@ public class RunTest {
     private static void dynamicProxyCase() {
         // 国内真实购买人
         RealPeople realPeople = new RealPeople();
-        DynamicProxy dynamicProxy = new DynamicProxy(realPeople);
+        InvocationImpl invocationImpl = new InvocationImpl(realPeople);
         /**
          * 大致实现原理：动态代理的实现通过比对"静态代理类"的实现即可。
          * #newProxyInstance()：返回一个被代理对象的实例，然后向上转型为其对应的接口。
@@ -50,8 +50,8 @@ public class RunTest {
          * interfaces ：代理类要实现的接口
          * h          ：已经实现"InvocationHandler"接口的类的对象，当代理对象调用方法时，会通过"此对象"的#invoke()来进行"被代理类的方法调用"
          */
-        People proxyInstance = (People) Proxy.newProxyInstance(realPeople.getClass().getClassLoader(), new Class[]{People.class}, dynamicProxy);
-        generateClassFile(DynamicProxy.class, "DynamicProxy");
+        People proxyInstance = (People) Proxy.newProxyInstance(realPeople.getClass().getClassLoader(), new Class[]{People.class}, invocationImpl);
+        generateClassFile(InvocationImpl.class, "DynamicProxy");
         proxyInstance.buy();
         proxyInstance.eat();
         proxyInstance.wash();
