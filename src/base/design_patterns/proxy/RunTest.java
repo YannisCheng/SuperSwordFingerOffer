@@ -72,7 +72,7 @@ public class RunTest {
     public static void generateClassFile(Class clazz, String proxyName) {
         //根据类信息和提供的代理类名称，生成字节码
         byte[] classFile = ProxyGenerator.generateProxyClass(proxyName, clazz.getInterfaces());
-        String paths = "/Users/yannischeng/Projects_Map/Projects_IDEA_Java/SuperSwordFingerOffer/";
+        String paths = "C:\\Users\\aadmin\\IdeaProjects\\SuperSwordFingerOffer\\";
         System.out.println(paths);
         FileOutputStream out = null;
 
