@@ -35,6 +35,7 @@ public class InvocationImpl implements InvocationHandler {
         //在真实的对象的 某一个方法 执行之前 我们可以添加自己的操作
         System.out.println("before invoke。。。");
         System.out.println("方法名："+method.getName());
+        // 注意：此处的invoke（）种的参数“method”就是“public abstract void base.design_patterns.proxy.People.wash()”
         Object invoke = method.invoke(object, args);
         //在真实的对象的 某一个方法 执行之后我们可以添加自己的操作
         System.out.println("after invoke。。。");
